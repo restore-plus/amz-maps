@@ -1,0 +1,39 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Land Use and Land Cover Maps for Brazil Emissions Reporting"
+  reader-mode: true
+
+  page-footer:
+    background: "#21618c"
+    left: |
+      Edited by Gilberto Camara, Felipe Carlos, and Rolf Simoes.
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+
+  site-url: https://restore-plus.github.io/docs/
+  repo-url: https://github.com/restore-plus/docs
+  repo-branch: quarto
+  repo-actions: [edit, issue]
+  chapters:
+    - index.qmd
+    - data.qmd
+    - methods.qmd
+    - reclassification.qmd
+    - results.qmd
+
+format:
+  html:
+    theme:
+      - litera
+      - handbook.scss
+    code-link: true
+    author-meta: "Gilberto Camara, Felipe Carlos, and Rolf Simoes"
+    callout-appearance: simple
+
+bibliography:
+    - bibliography/e-sensing.bib
+csl: ieee.csl
+

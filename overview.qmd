@@ -1,0 +1,471 @@
+# Overview
+
+> **Relevant source files**
+> * [.gitignore](https://github.com/restore-plus/restore-utils/blob/6ce0d861/.gitignore)
+> * [NAMESPACE](https://github.com/restore-plus/restore-utils/blob/6ce0d861/NAMESPACE)
+> * [R/remap.R](https://github.com/restore-plus/restore-utils/blob/6ce0d861/R/remap.R)
+> * [R/zzz.R](https://github.com/restore-plus/restore-utils/blob/6ce0d861/R/zzz.R)
+
+This document provides a high-level introduction to the **restoreutils** R package, which implements a comprehensive system for processing and classifying satellite imagery of the Amazon rainforest to map forest restoration opportunities and land use patterns.
+
+This page covers the package's purpose, overall architecture, key components, and how they interact. For installation instructions and a basic workflow example, see [Getting Started](/restore-plus/restore-utils/2-getting-started). For detailed documentation of specific subsystems, refer to the sections on [Data Sources](/restore-plus/restore-utils/4-data-sources), [Reclassification Engine](/restore-plus/restore-utils/5-reclassification-engine), [Remapping System](/restore-plus/restore-utils/6-remapping-system), and [Data Processing Operations](/restore-plus/restore-utils/7-data-processing-operations).
+
+---
+
+## What is restoreutils?
+
+The `restoreutils` package provides a complete pipeline for:
+
+1. **Acquiring authoritative land cover datasets** - Downloads and prepares PRODES deforestation data (2000-2024) and Terraclass land use classifications (2004-2022) for the Amazon region
+2. **Processing satellite imagery** - Integrates with Brazil Data Cube (BDC) and GLAD satellite imagery through STAC endpoints
+3. **Applying classification rules** - Implements 27 specialized reclassification rules to refine and standardize land cover classifications
+4. **Remapping classifications** - Uses a two-stage mapping system to translate diverse classification schemes into a unified internal schema and optional public release codes
+5. **Generating analysis products** - Produces masks, RGB mosaics, and area statistics for forest restoration planning
+
+The package extends the `sits` package's data cube infrastructure with domain-specific processing for Amazon forest monitoring and restoration mapping.
+
+**Sources:** [NAMESPACE L1-L122](https://github.com/restore-plus/restore-utils/blob/6ce0d861/NAMESPACE#L1-L122)
+
+ [R/zzz.R L1-L21](https://github.com/restore-plus/restore-utils/blob/6ce0d861/R/zzz.R#L1-L21)
+
+---
+
+## System Architecture
+
+### Overall Data Flow
+
+The `restoreutils` system is organized into five distinct processing layers that transform raw data sources into analytical products:
+
+
+```{mermaid}
+flowchart TD
+
+Dropbox["Dropbox Archives<br>PRODES & Terraclass"]
+BDC["Brazil Data Cube<br>Satellite Imagery"]
+GLAD["GLAD Project<br>Land Cover Data"]
+ROI["Amazon Region<br>GeoPackages"]
+download_prodes["download_prodes()"]
+prepare_prodes["prepare_prodes()"]
+download_terraclass["download_terraclass()"]
+prepare_terraclass["prepare_terraclass()"]
+roi_amazon_biome["roi_amazon_biome()"]
+roi_amazon_regions["roi_amazon_regions()"]
+load_prodes["load_prodes_YYYY()<br>25 year-specific loaders<br>2000-2024"]
+load_terraclass["load_terraclass_YYYY()<br>8 year-specific loaders<br>2004, 2008, 2010, 2012<br>2014, 2018, 2020, 2022"]
+load_mosaic_bdc["load_mosaic_bdc()"]
+load_mosaic_glad["load_mosaic_glad()"]
+load_restore_map_bdc["load_restore_map_bdc()"]
+load_restore_map_glad["load_restore_map_glad()"]
+cube_load["cube_load()"]
+cube_generate_indices["cube_generate_indices_bdc()<br>cube_generate_indices_glad()"]
+reclassify_rules["27 Reclassification Rules<br>reclassify_rule0 - rule27"]
+cube_remap["cube_remap()"]
+reference_table["restore_mapping_reference_table()"]
+release_table["restore_mapping_release_table()"]
+na_cleaner["na_cleaner()"]
+contextual_cleaner["contextual_cleaner()"]
+prodes_generate_mask["prodes_generate_mask()"]
+reclassify_mask["reclassify_mask()"]
+cube_to_rgb_mosaic_bdc["cube_to_rgb_mosaic_bdc()"]
+cube_to_rgb_mosaic_ogh["cube_to_rgb_mosaic_ogh()"]
+cube_save_area_stats["cube_save_area_stats()"]
+calculate_area_by_class["calculate_area_by_class()"]
+
+Dropbox -.-> download_prodes
+Dropbox -.-> download_terraclass
+BDC -.-> load_mosaic_bdc
+GLAD -.-> load_mosaic_glad
+ROI -.-> roi_amazon_biome
+
+subgraph Output ["Analysis & Output Layer"]
+    prodes_generate_mask
+    reclassify_mask
+    cube_to_rgb_mosaic_bdc
+    cube_to_rgb_mosaic_ogh
+    cube_save_area_stats
+    calculate_area_by_class
+end
+
+subgraph Processing ["Core Processing Engine"]
+    cube_load
+    cube_generate_indices
+    reclassify_rules
+    cube_remap
+    reference_table
+    release_table
+    na_cleaner
+    contextual_cleaner
+end
+
+subgraph Loading ["Data Loading & Caching Layer"]
+    load_prodes
+    load_terraclass
+    load_mosaic_bdc
+    load_mosaic_glad
+    load_restore_map_bdc
+    load_restore_map_glad
+end
+
+subgraph Acquisition ["Data Acquisition Layer"]
+    download_prodes
+    prepare_prodes
+    download_terraclass
+    prepare_terraclass
+    roi_amazon_biome
+    roi_amazon_regions
+end
+
+subgraph External ["External Data Sources"]
+    Dropbox
+    BDC
+    GLAD
+    ROI
+end
+```
+
+**Key Processing Stages:**
+
+| Layer | Purpose | Key Functions | Output |
+| --- | --- | --- | --- |
+| **External Data Sources** | Provides raw data from authoritative sources | N/A | PRODES archives, Terraclass archives, satellite imagery |
+| **Data Acquisition** | Downloads and prepares data with retry logic | `download_prodes()`, `prepare_prodes()`, `download_terraclass()`, `prepare_terraclass()` | Preprocessed GeoTIFF files |
+| **Data Loading & Caching** | Year-specific loaders with RDS caching | 33 year-specific `load_*_YYYY()` functions | `sits_cube` objects |
+| **Core Processing** | Classification refinement and standardization | 27 `reclassify_rule*()` functions, `cube_remap()`, mapping tables | Unified classification cubes |
+| **Analysis & Output** | Generates analytical products | `prodes_generate_mask()`, `cube_to_rgb_mosaic_*()`, `cube_save_area_stats()` | Masks, mosaics, statistics |
+
+**Sources:** [NAMESPACE L3-L119](https://github.com/restore-plus/restore-utils/blob/6ce0d861/NAMESPACE#L3-L119)
+
+ High-Level Diagram 1
+
+---
+
+### Core Processing Pipeline
+
+The heart of the system is the reclassification and remapping pipeline, which transforms diverse input classifications into a standardized output schema:
+
+```{mermaid}
+flowchart TD
+
+InputCube["sits_cube<br>Various Label Schemes<br>Forest, Pasture, agua, etc."]
+BaseRules["Base Rules 0-2<br>reclassify_rule0_forest()<br>reclassify_rule1_secundary_vegetation()<br>reclassify_rule2_current_deforestation()"]
+LandUseRules["Land Use Rules 3-8, 21, 23, 26<br>reclassify_rule3_pasture_wetland()<br>reclassify_rule4_silviculture()<br>reclassify_rule5_silviculture_pasture()<br>reclassify_rule6_semiperennial()<br>reclassify_rule7_semiperennial_pasture()<br>reclassify_rule8_annual_agriculture()"]
+InfraRules["Infrastructure Rules 9-10, 15<br>reclassify_rule9_minning()<br>reclassify_rule10_urban_area()<br>reclassify_rule15_urban_area_glad()"]
+WaterRules["Water Rules 11-12, 16, 24-25<br>reclassify_rule11_water()<br>reclassify_rule12_non_forest()<br>reclassify_rule16_water_glad()"]
+TemporalRules["Temporal Rules 13-14, 17-20, 22, 27<br>reclassify_rule13_temporal_trajectory_perene()<br>reclassify_rule14_temporal_neighbor_perene()<br>reclassify_rule20_temporal_trajectory_urban()"]
+RefTable["restore_mapping_reference_table()<br>Source Labels → Internal Codes<br>Forest → 103<br>Pasture_Wetland → 104<br>agua → 102<br>mineracao → 108"]
+CubeRemap["cube_remap()<br>Applies Mapping<br>Parallel Processing"]
+ReleaseTable["restore_mapping_release_table()<br>Internal → Release Codes<br>103 → 4<br>104 → 10<br>102 → 3<br>108 → 7"]
+OutputCube["sits_cube<br>Unified Schema<br>Internal: 100-112<br>Release: 1-13"]
+
+InputCube -.-> BaseRules
+InputCube -.-> LandUseRules
+InputCube -.-> InfraRules
+InputCube -.-> WaterRules
+InputCube -.-> TemporalRules
+BaseRules -.-> RefTable
+LandUseRules -.-> RefTable
+InfraRules -.-> RefTable
+WaterRules -.-> RefTable
+TemporalRules -.-> RefTable
+ReleaseTable -.-> OutputCube
+
+subgraph Output ["Standardized Output"]
+    OutputCube
+end
+
+subgraph Remapping ["Two-Stage Remapping"]
+    RefTable
+    CubeRemap
+    ReleaseTable
+    RefTable -.-> CubeRemap
+    CubeRemap -.-> ReleaseTable
+end
+
+subgraph Rules ["27 Reclassification Rules"]
+    BaseRules
+    LandUseRules
+    InfraRules
+    WaterRules
+    TemporalRules
+end
+
+subgraph Input ["Input Classifications"]
+    InputCube
+end
+```
+
+**Remapping Architecture:**
+
+The system uses a **two-stage translation process** to standardize classifications:
+
+1. **Reference Mapping** (`restore_mapping_reference_table()`) - Maps diverse source labels (e.g., `"Forest"`, `"Pasture_Wetland"`, `"agua"`) to internal numeric codes (100-112 range). This accommodates the variety of input classification schemes from different data sources and years.
+2. **Release Mapping** (`restore_mapping_release_table()`) - Optionally translates internal codes to a simplified public-facing schema (1-13 range). This provides a clean external API while maintaining internal processing flexibility.
+
+The `cube_remap()` function orchestrates this process, applying the appropriate mapping tables to each tile in a data cube using parallel processing.
+
+**Sources:** [R/remap.R L1-L133](https://github.com/restore-plus/restore-utils/blob/6ce0d861/R/remap.R#L1-L133)
+
+ [NAMESPACE L13-L114](https://github.com/restore-plus/restore-utils/blob/6ce0d861/NAMESPACE#L13-L114)
+
+ High-Level Diagram 2
+
+---
+
+## Key Capabilities
+
+### 1. Multi-Source Data Integration
+
+**Function Groups:**
+
+| Capability | Functions | Count |
+| --- | --- | --- |
+| **PRODES Data** | `load_prodes_2000()` through `load_prodes_2024()`, `load_prodes_nf()` | 26 functions |
+| **Terraclass Data** | `load_terraclass_2004()` through `load_terraclass_2022()` | 8 functions |
+| **Satellite Imagery** | `load_mosaic_bdc()`, `load_mosaic_glad()`, `load_restore_map_bdc()`, `load_restore_map_glad()` | 4 functions |
+| **ROI Management** | `roi_amazon_biome()`, `roi_amazon_regions()`, `roi_cerrado_regions()` | 3 functions |
+
+All loaders implement RDS caching to avoid redundant processing of large datasets.
+
+### 2. Comprehensive Reclassification Rules
+
+The package implements **27 specialized rules** organized into five categories:
+
+```{mermaid}
+flowchart TD
+
+Base["Base Classification<br>3 rules: 0-2<br>Forest, Secondary Veg, Deforestation"]
+Land["Land Use<br>9 rules: 3-8, 21, 23, 26<br>Pasture, Agriculture, Silviculture"]
+Infra["Infrastructure<br>3 rules: 9-10, 15<br>Mining, Urban"]
+Water["Water & Natural Features<br>5 rules: 11-12, 16, 24-25<br>Water Bodies, Non-Forest"]
+Temporal["Temporal Analysis<br>7 rules: 13-14, 17-20, 22, 27<br>Trajectory-based Classification"]
+RawData["Raw Classification Data"]
+Refined["Refined Classification"]
+
+RawData -.-> Base
+RawData -.-> Land
+RawData -.-> Infra
+RawData -.-> Water
+RawData -.-> Temporal
+Base -.-> Refined
+Land -.-> Refined
+Infra -.-> Refined
+Water -.-> Refined
+Temporal -.-> Refined
+
+subgraph RuleCategories ["Rule Categories"]
+    Base
+    Land
+    Infra
+    Water
+    Temporal
+end
+```
+
+Each rule addresses specific classification challenges such as pasture-agriculture confusion, urban expansion detection, or temporal consistency in perennial crops.
+
+### 3. Spatial Data Cleaning
+
+**Cleaning Functions:**
+
+* `na_cleaner()` - Fills missing values using spatial context
+* `contextual_cleaner()` - Applies modal filtering based on spatial neighborhoods
+
+Both functions leverage C++ implementations for performance and support configurable window sizes and parallel processing.
+
+### 4. Analysis Product Generation
+
+**Output Products:**
+
+| Product Type | Functions | Purpose |
+| --- | --- | --- |
+| **Masks** | `prodes_generate_mask()`, `reclassify_mask()` | Binary classification masks for targeting analysis |
+| **RGB Mosaics** | `cube_to_rgb_mosaic_bdc()`, `cube_to_rgb_mosaic_ogh()` | Visual products for web display (MBTiles format) |
+| **Statistics** | `cube_save_area_stats()`, `calculate_area_by_class()` | Quantitative area calculations by class |
+
+**Sources:** [NAMESPACE L3-L119](https://github.com/restore-plus/restore-utils/blob/6ce0d861/NAMESPACE#L3-L119)
+
+ High-Level Diagrams 1-2
+
+---
+
+## Package Structure
+
+### Exported Function Summary
+
+The package exports **119 functions** organized into functional groups:
+
+```{mermaid}
+flowchart TD
+
+Data["Data Acquisition & Loading<br>41 functions<br>download_*, prepare_*, load_*"]
+Rules["Reclassification Rules<br>28 functions<br>reclassify_rule0 - rule27<br>reclassify_remap_pixels"]
+Remap["Remapping System<br>3 functions<br>cube_remap<br>restore_mapping_reference_table<br>restore_mapping_release_table"]
+Clean["Data Cleaning<br>4 functions<br>na_cleaner, contextual_cleaner<br>replace_na, reclassify_temporal_results_to_maps"]
+Mask["Mask Operations<br>4 functions<br>prodes_generate_mask, reclassify_mask<br>get_mask_file_year, prepare_water_mask"]
+Cube["Cube Operations<br>8 functions<br>cube_load, cube_remap<br>cube_generate_indices_*<br>cube_to_rgb_mosaic_*<br>cube_save_area_stats"]
+Analysis["Analysis & Stats<br>4 functions<br>calculate_area_by_class<br>cube_pixel_frequency<br>crosstable, rat_set_style"]
+Util["Utilities<br>27 functions<br>ROI, file management<br>storage, notifications"]
+Pipeline["Processing Pipeline"]
+
+Data -.-> Pipeline
+Rules -.-> Pipeline
+Remap -.-> Pipeline
+Clean -.-> Pipeline
+Mask -.-> Pipeline
+Cube -.-> Pipeline
+Analysis -.-> Pipeline
+Util -.-> Pipeline
+
+subgraph Functions ["Exported Functions by Category"]
+    Data
+    Rules
+    Remap
+    Clean
+    Mask
+    Cube
+    Analysis
+    Util
+end
+```
+
+**Function Count by Category:**
+
+| Category | Function Count | Key Entry Points |
+| --- | --- | --- |
+| Data Loading | 41 | `load_prodes_YYYY()`, `load_terraclass_YYYY()`, `load_mosaic_bdc()` |
+| Reclassification Rules | 28 | `reclassify_rule0()` - `reclassify_rule27()` |
+| Remapping | 3 | `cube_remap()`, `restore_mapping_reference_table()` |
+| Data Cleaning | 4 | `na_cleaner()`, `contextual_cleaner()` |
+| Mask Generation | 4 | `prodes_generate_mask()`, `reclassify_mask()` |
+| Cube Operations | 8 | `cube_load()`, `cube_to_rgb_mosaic_bdc()` |
+| Analysis & Statistics | 4 | `calculate_area_by_class()`, `cube_save_area_stats()` |
+| Utilities | 27 | `roi_amazon_biome()`, `dropbox_upload()`, `notify()` |
+
+**Sources:** [NAMESPACE L1-L122](https://github.com/restore-plus/restore-utils/blob/6ce0d861/NAMESPACE#L1-L122)
+
+---
+
+### Package Initialization
+
+The package configures itself on load via `R/zzz.R`:
+
+```{mermaid}
+flowchart TD
+
+Load["library(restoreutils)"]
+ZZZ["R/zzz.R Execution"]
+CPP["Load C++ Library<br>@useDynLib restoreutils<br>11 C++ functions registered"]
+Download["Configure download.file<br>method: curl<br>20 retries, 60s delay<br>2000s max time"]
+Env["Check Environment Variables<br>MASK_PRODES_BASE_DIR<br>MASK_TERRACLASS_BASE_DIR<br>RESTORE_PLUS_STAC_ADDRESS"]
+Ready["Package Ready"]
+
+Load -.-> ZZZ
+ZZZ -.-> CPP
+ZZZ -.-> Download
+ZZZ -.-> Env
+CPP -.-> Ready
+Download -.-> Ready
+Env -.-> Ready
+
+subgraph Initialization ["Initialization Steps"]
+    CPP
+    Download
+    Env
+end
+```
+
+**Configuration Details:**
+
+* **C++ Integration** - Registers compiled functions via `@useDynLib restoreutils, .registration = TRUE`
+* **Robust Downloads** - Sets `download.file.method = "curl"` with 20 retries, 60-second delays, and 2000-second maximum operation time
+* **Environment Variables** - Respects optional overrides for base directories and STAC endpoints
+
+**Sources:** [R/zzz.R L1-L21](https://github.com/restore-plus/restore-utils/blob/6ce0d861/R/zzz.R#L1-L21)
+
+ [NAMESPACE L120-L121](https://github.com/restore-plus/restore-utils/blob/6ce0d861/NAMESPACE#L120-L121)
+
+ High-Level Diagram 6
+
+---
+
+### Directory Structure
+
+The package uses a standardized directory hierarchy:
+
+```
+data/derived/masks/
+├── base/
+│   ├── prodes/
+│   │   └── {version}/
+│   │       └── {year}/
+│   │           └── *.tif
+│   ├── terraclass/
+│   │   └── {version}/
+│   │       └── {year}/
+│   │           └── *.tif
+│   └── water/
+│       └── glad/
+│           └── {year}/
+│               └── *.tif
+└── {additional processing outputs}
+```
+
+This structure is managed by utility functions like `project_masks_dir()`, `project_cubes_dir()`, `project_classifications_dir()`, and `project_mosaics_dir()`.
+
+**Sources:** [.gitignore L1-L16](https://github.com/restore-plus/restore-utils/blob/6ce0d861/.gitignore#L1-L16)
+
+ High-Level Diagram 6
+
+---
+
+## Technology Stack
+
+### Core Dependencies
+
+The `restoreutils` package is built on five foundational R packages:
+
+| Package | Role | Key Uses |
+| --- | --- | --- |
+| **sits** | Data cube infrastructure | Core abstraction for spatial-temporal data, parallel processing framework |
+| **terra** | Low-level raster operations | Reading, cropping, reprojecting GeoTIFF files |
+| **sf** | Vector data handling | GeoPackage I/O for ROI definitions |
+| **Rcpp** | R-C++ integration | Enables 11 performance-critical C++ functions |
+| **fs** | File system operations | Cross-platform path handling |
+
+### Performance Layer
+
+The package includes **11 C++ functions** for performance-critical operations:
+
+* `C_trajectory_*_analysis` - Temporal trajectory analysis
+* `C_context_cleaner` - Spatial modal filtering
+* `C_na_cleaner` - Missing value interpolation
+* `C_remap_values` - Fast label remapping
+* `C_urban_transition` - Urban expansion detection
+
+These are automatically registered on package load via `@useDynLib` and `@importFrom Rcpp sourceCpp`.
+
+**Sources:** [R/zzz.R L1-L3](https://github.com/restore-plus/restore-utils/blob/6ce0d861/R/zzz.R#L1-L3)
+
+ [NAMESPACE L120-L121](https://github.com/restore-plus/restore-utils/blob/6ce0d861/NAMESPACE#L120-L121)
+
+ High-Level Diagram 5
+
+---
+
+## Next Steps
+
+To begin using `restoreutils`:
+
+1. **Install and configure** - See [Installation and Setup](/restore-plus/restore-utils/2.1-installation-and-setup) for environment variables and directory structure
+2. **Run a basic workflow** - Follow [Basic Workflow](/restore-plus/restore-utils/2.2-basic-workflow) for a complete example
+3. **Understand core concepts** - Read [Core Concepts](/restore-plus/restore-utils/3-core-concepts) for data cubes, remapping architecture, and spatial processing
+4. **Explore data sources** - See [Data Sources](/restore-plus/restore-utils/4-data-sources) for PRODES, Terraclass, and satellite imagery integration
+5. **Apply reclassification rules** - Consult [Reclassification Engine](/restore-plus/restore-utils/5-reclassification-engine) for detailed rule documentation
+
+For advanced topics like C++ integration and parallel processing optimization, see [Advanced Topics](/restore-plus/restore-utils/8-advanced-topics).
+
+**Sources:** [NAMESPACE L1-L122](https://github.com/restore-plus/restore-utils/blob/6ce0d861/NAMESPACE#L1-L122)
+
+ [R/zzz.R L1-L21](https://github.com/restore-plus/restore-utils/blob/6ce0d861/R/zzz.R#L1-L21)
+
+ [R/remap.R L1-L133](https://github.com/restore-plus/restore-utils/blob/6ce0d861/R/remap.R#L1-L133)

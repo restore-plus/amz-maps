@@ -1,0 +1,34 @@
+# Welcome {-}
+
+```{r}
+#| label: cover
+#| echo: false
+#| out-width: 90%
+knitr::include_graphics("./images/cover_art.png") 
+```
+
+This on-line book contains information on the generation of annual land use and land cover (LULC) maps for the Brazilian Amazon biome for the period 2000-2025. The resulting data set is part of the **LUC-Brazil** initiative, which aims to produce annual LUCC maps for Brazil in the 2020-2025 period. This data set has been produced by Brazil's National Institute for Space Research (INPE) with the support of the RESTORE+ project, at the request of Brazil's Ministry of Science and Technology, through its General Coordination for Climate Science (GCCL) . Its primary purpose is to support the Brazilian government in the production of its National Inventory of Greenhouse Gases Emissions. 
+
+## Requirements {-}
+
+The requirements set forth by GCCL/MCTI are as follows:
+
+* The LULC classes need to be compatible with the categorization used in the Brazilian Inventory of GHG Emissions.
+
+* The maps should be compatible with those produced by the [TerraClass](www.terraclass.gov.br) project run by INPE and EMBRAPA, especially with those for the years 2018, 2020 and 2022. 
+
+
+## Methodology Overview {-}
+
+The LUC-Brasil project is developed based on the analysis of satellite image time series, using the `sits` open source software package and the Brazil Data Cube infrastructure. Combined with Earth observation data cubes, time series are a powerful tool for monitoring change, providing insights and information that single snapshots cannot achieve.  Time series analysis are a new and exciting paradigm. Using time series, experts improve their understanding of ecological patterns and processes. Instead of selecting individual images from specific dates and comparing them, researchers track change continuously. 
+
+The `sits` package is described on the on-line book [Satellite Image Time Series Analysis Using Earth Observation Data Cubes](https://e-sensing.github.io/sitsbook/). 
+
+
+## Project Team {-}
+
+The project is led by Prof. Dr. Isabel Escada and Prof. Dr. Gilberto Camara (INPE), with the support of the RESTORE+ team: Dr. Ana Paula Dal'Asta, Dr. Ana Rorato, Dr. Anielli Souza, Dr. Rolf Simões, MSc Felipe  Carlos, MSc Felipe Souza. 
+
+## Intellectual property rights {-}
+
+This book is licensed as [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/) by Creative Commons. 

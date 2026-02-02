@@ -1,0 +1,232 @@
+# Data Sets {-}
+
+## Scope {-}
+
+For the Amazon biome, the LUC-Brasil repository implements a comprehensive land cover classification system using Landsat satellite imagery from 1996 to 2022. The system produces annual land cover masks through a multi-stage pipeline that combines machine learning classification, temporal rule processing, and year-specific refinement using reference datasets from PRODES and TerraClass. The repository processes 25 years of historical data (2000-2025) and generates classified masks at 30-meter resolution, supporting deforestation monitoring and land use analysis in the Amazon region.
+
+## Image Data {-}
+
+The classification uses Landsat imagery from two distinct sources, each optimized for different temporal periods. This stage produces regularized datacubes with consistent 30m spatial resolution and regular temporal intervals.
+
+### GLAD Landsat Historical Data {-}
+
+Historical data for years 2000 to 2015 uses the GLAD (Global Land Analysis & Discovery) service accessed through the OGH (OpenGeoHub) interface. The regularization process aggregates observations into bi-monthly periods. The OGH (OpenGeoHub) service provides access to historical Landsat imagery through the GLAD (Global Land Analysis & Discovery) processing system. This source is used for historical datacube generation.
+
+**Technical Specifications**
+
+| Property | Value |
+| --- | --- |
+| Source identifier | `"OGH"` |
+| Collection name | `"LANDSAT-GLAD-2M"` |
+| Temporal coverage | 2002-2015 |
+| Temporal resolution | Bi-monthly (P2M) |
+| Spatial resolution | 30 meters |
+| Coordinate system | EPSG:4326 (WGS84) |
+| Spectral bands | BLUE, GREEN, RED, NIR, SWIR1, SWIR2 |
+
+
+
+### BDC Recent Landsat Data {-}
+
+The Brazil Data Cube (BDC) provides access to recent Landsat imagery through a pre-processed, analysis-ready data cube infrastructure maintained by INPE (Brazilian National Institute for Space Research). Recent data from 2015-2024 leverages the Brazil Data Cube (BDC) infrastructure, which provides higher temporal density with monthly aggregation.
+
+| Property | Value |
+| --- | --- |
+| Source identifier | `"BDC"` |
+| Collection name | `"LANDSAT-OLI-16D"` |
+| Temporal coverage | 2015-2025 |
+| Temporal resolution | Monthly (P1M) |
+| Spatial resolution | 30 meters |
+| Coordinate system | BDC_MD_V2 grid system |
+| Spectral bands | BLUE, GREEN, RED, NIR08, SWIR16, SWIR22, CLOUD |
+
+## Map Data Sources {-}
+
+This section lists the maps used in the LUC-Brasil project as additional information, mostly as masks to improve the spatial and temporal accuracy of the result. 
+
+### PRODES Deforestation Data {-}
+
+PRODES (Programa de Monitoramento do Desmatamento na Amazônia Legal) is Brazil's official deforestation monitoring program, maintained by INPE. It provides annual deforestation polygons for the Legal Amazon region. PRODES masks are referenced by multiple reclassification rules throughout the year-specific mask generation process. 
+
+**Technical Specifications**
+
+| Property | Value |
+| --- | --- |
+| Temporal coverage | 2000-2025 |
+| Update frequency | Annual |
+| Spatial resolution | Vector polygons and raster mask |
+| Key attributes | Deforestation year, forest/non-forest classification |
+| Usage context | Forest mask generation, deforestation reclassification rules |
+
+### Terraclass Land Cover Surveys {-}
+
+Terraclass is a land use and land cover mapping project for the Brazilian Legal Amazon, produced by INPE and Embrapa. Unlike PRODES (annual), Terraclass provides detailed land cover classifications at specific survey years. Terraclass provides detailed land cover classifications that are used for various reclassification rules. 
+
+**Technical Specifications**
+
+| Property | Value |
+| --- | --- |
+| Survey years | 2004, 2008, 2010, 2012, 2014, 2018, 2020, 2022 (8 surveys) |
+| Update frequency | Irregular |
+| Spatial resolution | Vector polygons and raster maps|
+| Key classes | Silviculture, Pereniall, Semiperennial and Annual agriculture, Urban area, Water |
+
+### Water Masks {-}
+
+Water masks are used in temporal consistency rules to identify persistent water bodies across multiple years. These are primarily utilized in temporal processing rules rather than base mask preparation.
+
+**Technical Specifications**
+
+| Property | Value |
+| --- | --- |
+| Primary source | Terraclass water class |
+| Temporal window | 2000-2025 |
+| Purpose | Identify stable water bodies vs. temporary flooding |
+
+
+## Sample Datasets {-}
+
+This section lists the ground samples used by the LUC-Brasil project team as initial sources to select the training data used to build the modules for classification. These data sets are openly available in the Github repository [lulcbrasil-samples](https://github.com/restore-plus/lulcbrasil-samples). 
+
+### Land Use and Land Cover in Baixo Tocantins (1996)
+
+The following table presents the metadata of this dataset:
+
+| Region               | Baixo Tocantins in Para state (Brazil) | 
+| --- | --- |
+| Number of Time Series | `465`|
+| Satellite-Sensor     | LANDSAT-OLI |
+| Spatial Resolution   | 30 meters  |                                                    
+| Temporal Extent      | `1996-01-01` to `1996-12-31`                                    
+| Temporal Resolution  | 3-month composites (4 data points per year)|
+| Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
+| Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR` |
+| Land Cover Classes   | `Small-Scale Agriculture`, `Water Bodies`, `Primary Forest`, `Others`, `Clean Pasture`, `Dirty Pasture and Pasture with Regeneration`, `Urbanized Area`, `Advanced Secondary Vegetation`, `Initial Secondary Vegetation`|                         
+| Source            | Anielli Souza, Miguel Monteiro, Isabel Escada  (INPE)|
+
+
+### Land Use and Land Cover in Baixo Tocantins (2021)
+
+| Region               | Baixo Tocantins in Para state (Brazil) |
+| --- | --- |
+| Number of Time Series | `533` |
+| Satellite-Sensor     | LANDSAT-OLI |
+| Spatial Resolution   | 30 meters |
+| Time Extent          | `2021-01-01` to `2021-12-31`|
+| Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
+| Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR`|
+| Land Cover Classes   | `Small-Scale Agriculture`, `Water`, `Forest`, `Others`, `Clean Pasture`, `Dirty Pasture and Pasture with Regeneration`, `Urban Area`, `Advanced Secondary Vegetation`, `Secondary Vegetation`, `Large-Scale Agriculture`|
+| Source            | Anielli Souza, Miguel Monteiro, Isabel Escada  (INPE)|
+ 
+
+### LULC in Baixo Tocantins using HLSL30 (2021)
+
+| Region               | Baixo Tocantins in Para state (Brazil)|
+| --- | --- |
+| Number of Time Series | `533`     |
+| Satellite-Sensor     | `HLSL30`|
+| Spatial Resolution   | 30 meters |
+| Time Extent          | `2021-01-01` to `2021-12-31`|
+| Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
+| Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR` |
+| Source            | Anielli Souza, Miguel Monteiro, Isabel Escada  (INPE)|
+
+
+### Land Cover in the Amazon Rainforest using LANDSAT (2020)
+
+| Region               | Amazon Rainforest |
+| --- | --- |
+| Number of Time Series | `1489`|
+| Satellite-Sensor     | LANDSAT-OLI |
+| Spatial Resolution   | 30 meters |
+| Time Extent          | `2020-01-01` to `2020-12-31`|
+| Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
+| Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR`  |
+| Land Cover Classes   | `Forest`|
+| Source            | Luis Sadeck (INPE)|
+
+### Land Cover in the Amazon Rainforest using HLSL30 for 2020
+
+| Region               | Amazon Rainforest |
+| --- | --- |
+| Number of Time Series | `1489`|
+| Satellite-Sensor     | `HLSL30`|
+| Spatial Resolution   | 30 meters |
+| Time Extent          | `2020-01-01` to `2020-12-31`|
+| Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
+| Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR` |
+| Land Cover Classes   | `Forest` |
+| Source           | Luis Sadeck  (INPE) |  
+
+
+### Land Use and Land Cover in Rondonia using LANDSAT for 1988
+
+| Region               | Rondonia state (Brazil) |
+| --- | --- |
+| Number of Time Series | `1104` |
+| Satellite-Sensor     | LANDSAT-OLI |
+| Spatial Resolution   | 30 meters |
+| Time Extent          | `1988-01-01` to `1988-12-31`|
+| Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
+| Spectral Indices     | `NDVI`, `EVI`, `NBR` |
+| Land Cover Classes   | `Clear_Cut_Bare_Soil`, `Clear_Cut_Burned_Area`, `Clear_Cut_Vegetation`, `Forest`, `Water`, `Moist_Land`, `Wetland`, `Moist_Soil`, `Riparian_Forest`, `Mountainside_Forest`, `Eutrophic_Soil`, `Dystrophic_Soil` |
+| Source            | Lucas Ferreira  (INPE) |
+
+
+### Land Use and Land Cover in Rondonia using LANDSAT for 2022
+
+| Region               | Rondonia state |
+| --- | --- |
+| Number of Time Series | `6007` |
+| Satellite-Sensor     | LANDSAT-OLI |
+| Spatial Resolution   | 30 meters |
+| Time Extent          | `2022-01-01` to `2022-12-31` |
+| Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR2` |
+| Spectral Indices     | `NDVI`, `EVI`, , `NBR` |
+| Land Cover Classes   | `Clear_Cut_Bare_Soil`, `Clear_Cut_Burned_Area`, `Clear_Cut_Vegetation`, `Forest`, `Mountainside_Forest`, `Riparian_Forest`, `Seasonally_Flooded`, `Water`, `Wetland` |
+| Source           | Anielli Souza, Ana Paula Del'Asta, Ana Rorato (INPE) |
+
+### Land Use and Land Cover in Amazon Biome using LANDSAT for 2013-2014
+
+| Region               | Amazon Biome (Brazil) |
+| --- | --- |
+| Number of Time Series | `598` |
+| Satellite-Sensor     | LANDSAT-ETM |
+| Spatial Resolution   | 30 meters |
+| Time Extent          | `2013-09-01` to `2014-06-01` |
+| Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22` |
+| Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR` |
+| Land Cover Classes   | `Pasture`, `Savanna`, `Soy_Fallow`, `Soy_Corn`, `Soy_Cotton` |
+| Source.                  | Rolf Simoes (INPE) |  
+
+
+### Land Use and Land Cover in Legal Amazon using LANDSAT for 2019-2020
+
+| Region               | Legal Amazon (Brazil) |
+| --- | --- |
+| Number of Time Series | `35723` |
+| Satellite-Sensor     | LANDSAT-OLI |  
+| Spatial Resolution   | 30 meters |
+| Time Extent          | `2019-07-28` to `2020-07-27`|
+| Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
+| Spectral Indices     | `NDVI`, `EVI` |
+| Land Cover Classes   | `Semi-Perenial Agriculture`, `Annual Agriculture 1 cycle`, `Annual Agriculture 2 cycles`, `Perenial Agriculture`, `Water Bodies`, `Shrubby Pasture`, `Herbaceous Pasture`, `Silviculture`, `Secondary Vegetation` |
+| Source          | Empresa Brasileira de Pesquisa Agropecuária - EMBRAPA |                                                                           
+
+### Land Use and Land Cover in Legal Amazon using LANDSAT for 2021-2022
+
+The following table presents the metadata of this dataset:
+
+| Region               | Legal Amazon (Brazil) |
+| --- | --- |
+| Number of Time Series | `160496` |
+| Satellite-Sensor     | LANDSAT-OLI |
+| Spatial Resolution   | 30 meters |
+| Time Extent          | `2021-07-12` to `2022-09-30`|
+| Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
+| Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR` |
+| Land Cover Classes   | `1ciclo`, `2ciclos`, `agua`, `past_arb`, `past_herb`, `semiperene`, `veg_natural` |
+| Land Cover Classes   | `Semi-Perenial Agriculture`, `Annual Agriculture 1 cycle`, `Annual Agriculture 2 cycles`, `Water Bodies`, `Shrubby Pasture`, `Herbaceous Pasture`, `Natural Vegetation` |
+| Source          | Empresa Brasileira de Pesquisa Agropecuária - EMBRAPA |  
+
+
