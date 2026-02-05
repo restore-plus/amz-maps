@@ -2,7 +2,7 @@
 
 ## Scope {-}
 
-For the Amazon biome, the LUC-Brasil repository implements a comprehensive land cover classification system using Landsat satellite imagery from 1996 to 2022. The system produces annual land cover masks through a multi-stage pipeline that combines machine learning classification, temporal rule processing, and year-specific refinement using reference datasets from PRODES and TerraClass. The repository processes 25 years of historical data (2000-2025) and generates classified masks at 30-meter resolution, supporting deforestation monitoring and land use analysis in the Amazon region.
+For the Amazon biome, the LUC-Brasil repository implements a comprehensive land cover classification system using Landsat satellite imagery from 2000 to 2024. The system produces annual land cover masks through a multi-stage pipeline that combines machine learning classification, temporal rule processing, and year-specific refinement using reference datasets from PRODES and TerraClass. The work processed 25 years of historical data to generate classified masks at 30-meter resolution, supporting deforestation monitoring and land use analysis in the Amazon region.
 
 ## Image Data {-}
 
@@ -10,7 +10,7 @@ The classification uses Landsat imagery from two distinct sources, each optimize
 
 ### GLAD Landsat Historical Data {-}
 
-Historical data for years 2000 to 2015 uses the GLAD (Global Land Analysis & Discovery) service accessed through the OGH (OpenGeoHub) interface. The regularization process aggregates observations into bi-monthly periods. The OGH (OpenGeoHub) service provides access to historical Landsat imagery through the GLAD (Global Land Analysis & Discovery) processing system. This source is used for historical datacube generation.
+Historical data for years 2000 to 2014 uses the GLAD (Global Land Analysis & Discovery) service accessed through the OGH (OpenGeoHub) interface. The regularization process aggregates observations into bi-monthly periods. The OGH (OpenGeoHub) service provides access to historical Landsat imagery through the GLAD (Global Land Analysis & Discovery) processing system. This source is used for historical datacube generation.
 
 **Technical Specifications**
 
@@ -18,7 +18,7 @@ Historical data for years 2000 to 2015 uses the GLAD (Global Land Analysis & Dis
 | --- | --- |
 | Source identifier | `"OGH"` |
 | Collection name | `"LANDSAT-GLAD-2M"` |
-| Temporal coverage | 2002-2015 |
+| Temporal coverage | 2002-2014 |
 | Temporal resolution | Bi-monthly (P2M) |
 | Spatial resolution | 30 meters |
 | Coordinate system | EPSG:4326 (WGS84) |
@@ -34,7 +34,7 @@ The Brazil Data Cube (BDC) provides access to recent Landsat imagery through a p
 | --- | --- |
 | Source identifier | `"BDC"` |
 | Collection name | `"LANDSAT-OLI-16D"` |
-| Temporal coverage | 2015-2025 |
+| Temporal coverage | 2015-2024 |
 | Temporal resolution | Monthly (P1M) |
 | Spatial resolution | 30 meters |
 | Coordinate system | BDC_MD_V2 grid system |

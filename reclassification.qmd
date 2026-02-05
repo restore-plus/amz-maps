@@ -1,7 +1,5 @@
 # Reclassification rules {-}
 
-
-
 This section   provides a high-level introduction to reclassification rules used in the LUC-Brazil project. This stage implements 27 specialized reclassification rules to refine and standardize land cover classification. Temporal trajectory rules analyze multi-year patterns to detect transitions, enforce consistency, and correct isolated pixel misclassifications. Each rule addresses specific classification challenges such as pasture-agriculture confusion, urban expansion detection, or temporal consistency in perennial crops.
 
 The heart of the system is the reclassification and remapping pipeline, which transforms diverse input classifications into a standardized output schema. The package implements 27 specialized rules organized into the following categories:
@@ -13,50 +11,89 @@ The heart of the system is the reclassification and remapping pipeline, which tr
 5. Multi-year transitions: considers three consecutive years to ensure consistency of more difficult classes (e.g., conflicts between Shrubby Pasture and Secondary Vegetation). 
 
 
-
-
-| Intermediate Code | Final Class | Label Description |
-| --- | --- | --- |
-| 100 | 1 | Two-cycle agriculture |
-| 101 | 2 | Semi-perennial agriculture |
-| 102 | 3 | Water |
-| 103 | 4 | Forest |
-| 106 | 5 | Silviculture |
-| 107 | 6 | Secondary vegetation |
-| 108 | 7 | Mining |
-| 109 | 8 | Urban area |
-| 111 | 9 | Natural non-forest |
-| 104 | 10 | Pasture |
-| 105 | 11 | Wetlands |
-| 110 | 12 | Deforestation |
-| 112 | 13 | Perennial agriculture |
+The rules are described below, in the order on which they are applied. 
 
 
 
+## Base Mask Preparation {-}
 
-
-
-
-The reclassification rules fall into six functional categories:
-
-CLASSIFICATION["Initial Classification<br>From Stage 2 + Stage 4"]
-
-
-## Base Mask Preparation
-
-Base Mask Preparation is a key part in the classification pipeline. It prepares reference masks from two authoritative external datasets: PRODES deforestation monitoring data and Terraclass land use and land cover maps. These base masks serve as ground truth references for all downstream processing stages.
+Base Mask Preparation is a key part in the classification pipeline. It prepares reference masks from two authoritative external datasets: PRODES deforestation monitoring data,  Terraclass land use and land cover maps, and water masks. These base masks serve as ground truth references for all downstream processing stages.
 
 The base mask preparation includes geomtrically adjusting the PRODES deforestation mask to remove some inconsistencies in the border pixels which distort the overall statistics.
 
-## Water Consistency 
+## Reclassification Part 1: Yearly Rules Defined by Masks  {-} 
+
+### Secondary Vegetation Rule {-}
+
+This rule distinguishes forested area in Amazonia between primary forests and secondary vegetation. To that aim, it uses the PRODES mask, which indicates the primary forest area. The secondary vegetation areas are those that have been deforested and then abandoned so that a forest regeneration process has started. 
+
+### Current Deforestation Rule {-}
+
+For each year, the PRODES masks also contains information on forest removal on the current rule. This rule ensures that all areas deforested in a given year are not marked as "Pasture" or "Agriculture", since TerraClass also follows the same convention of not classifying land use for areas deforested in the year it is produced.
+
+### Residuals Rule {-}
+
+This rule is necessary due to problems in the PRODES mask. Sine PRODES only observes one image per year for a given Landsat tile, some areas are not observed due to clouds and are masked as such. When such areas are visible in later years and then assigned as "residuals". Since LUC-Brasil uses time series which enable removal of most cloudy areas, this rule assigns PRODES residuals to the "Pasture" class.
+
+### Silviculture Rule #1 {-}
+
+This rule improves the representation of silviculture (planted forests) by using TerraClass maps as a reference. Pixels in the LUC-Brasil maps are thus updated to reflect the TerraClass maos. This rule is applied only to the years where TerraClass maps are available. There is another rule (see below) that updates the "Silviculture" class in years without TerraClass maps.
+
+### Silviculture Rule #2 {-}
+
+This rule considers the case of pixels classified as "Silviculture" by LUC-Brasil which are not classified as such by TerraClass. These pixels are reclassified as "Pasture". 
+
+### Semi-Perennial Agriculture Rule #1 {-}
+
+This rule reclassifies the LUC-Brasil pixels to match the TerraClass "Semi-Perennial Agriculture" class, in the years where TerraClass maps are available.
+
+### Semi-Perennial Agriculture Rule #2 {-}
+
+This rule reclassifies the LUC-Brasil pixels which are classified as "Semi-Perennial Agriculture" but that do not match any agricultural label in the TerraClass maps. Such pixels are reclassified as "Pasture". The rule applies in the years where TerraClass maps are available.
+
+### Semi-Perennial Agriculture Rule #3  {-}
+
+This rule reclassifies the LUC-Brasil pixels which are classified as "Semi-Perennial Agriculture" to match the TerraClass "Temporary Agriculture" class, in the years where TerraClass maps are available.
+
+### Annual Agriculture Rule  {-}
+
+This rule reclassifies the LUC-Brasil pixels which are classified as "Semi-Perennial Agriculture" to match the TerraClass "Temporary Agriculture" class, in the years where TerraClass maps are available.
+
+### Mining Rule {-}
+
+This rule includes areas which TerraClass identifies as "Mining", since the LUC-Brasil classes detected using Landsat do not provide a consistent basis for such classification.
+
+### Urban Areas Rule {-}
+
+This rule includes areas which TerraClass identifies as "Urban Areas", since the LUC-Brasil classes detected using Landsat do not provide a consistent basis for such classification.
+
+### Water Bodies Rule #1 {-}
+
+This rule includes areas which TerraClass identifies as "Water Bodies" and maps them to the "Water" class, provided that LUC-Brasil did not identify them as either "Wetlands" or "Seasonally Flooded".
+
+### Water Bodies Rule #2 {-}
+
+This rule includes areas which PRODES identifies as "Hidrography" and and maps them to the "Water" class, provided that LUC-Brasil did not identify them as either "Wetlands" or "Seasonally Flooded".
+
+### Natural Non-Forest Areas Rule {-}
+
+This rule reclassifies as "Natural Non-Forest" pixels which fall inside the PRODES mask of "Non-Forest" class.
+
+## Reclassification Part 2: Multi-year Rules {-} 
+
+### Water Consistency Rule {-}
+
+Processes a 3-year window centered on 2019, identifying pixels classified as "Water" across any of the years 2018, 2019, and 2020 are reclassified as "Water" for all three years.
+
+### Perennial Agriculture Trajectory{-}
+
+Processes data for each of 5 specific years (2009, 2011, 2013, 2019, 2021), which lie between years where TerraClass exists. For each year, reclassifies a pixel as "Perennial Agriculture" if the pixel has this label in the TerraClass map of the following year. 
+
+### Secondary Vegetation - Pasture Consistency {-}
+
+Processes all pixels from 2001 to 2021 considering a period of three consecutive years. For each 3-year window, if the pixel class in the current year is "Secondary Vegetation" and "Pasture" in both the previous and the subsequent years, it is reclassified as "Pasture". 
 
 
-
-:
-
-1. **Water Consistency (Lines 32-58)**: Processes a 3-year window centered on 2019, identifying pixels classified as water across all three years. Output is versioned as `temporal-mask-1`.
-2. **Perene Trajectory (Lines 61-107)**: For each of 5 specific years, loads Terraclass data from surrounding years (year±1) and validates perene classifications. Output is versioned as `temporal-mask-2`.
-3. **VS-Pasture Classification (Lines 110-161)**: For years 2001-2021, analyzes 3-year windows to identify vegetation-secondary pasture transitions. Output is versioned as `temporal-mask-3`.
 4. **Annual Agriculture (Lines 164-192)**: Builds a temporal brick from all years and applies agricultural detection. The brick is then split back into individual years. Output is versioned as `temporal-mask-4`.
 
 ## Stage 5: Year-Specific Mask Generation {-}
