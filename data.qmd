@@ -52,7 +52,7 @@ PRODES (Programa de Monitoramento do Desmatamento na Amazônia Legal) is Brazil'
 
 | Property | Value |
 | --- | --- |
-| Temporal coverage | 2000-2025 |
+| Temporal coverage | 2000-2024 |
 | Update frequency | Annual |
 | Spatial resolution | Vector polygons and raster mask |
 | Key attributes | Deforestation year, forest/non-forest classification |
@@ -66,10 +66,9 @@ Terraclass is a land use and land cover mapping project for the Brazilian Legal 
 
 | Property | Value |
 | --- | --- |
-| Survey years | 2004, 2008, 2010, 2012, 2014, 2018, 2020, 2022 (8 surveys) |
-| Update frequency | Irregular |
-| Spatial resolution | Vector polygons and raster maps|
-| Key classes | Silviculture, Pereniall, Semiperennial and Annual agriculture, Urban area, Water |
+| Survey years | 2004, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024 |
+| Spatial resolution | Landsat (2004-2016) and Sentinel-2 (2018-2022)|
+| Key classes (2022-2024 versions) | Silviculture, Perennial, Semiperennial and Annual Agriculture, Herbaceous Pasture, Shrubby Pasture, Secondary Vegetation, Mining, Urban area, Water |
 
 ### Water Masks {-}
 
@@ -86,7 +85,9 @@ Water masks are used in temporal consistency rules to identify persistent water 
 
 ## Sample Datasets {-}
 
-This section lists the ground samples used by the LUC-Brasil project team as initial sources to select the training data used to build the modules for classification. These data sets are openly available in the Github repository [lulcbrasil-samples](https://github.com/restore-plus/lulcbrasil-samples). 
+This section lists the ground samples used by the LUC-Brasil project team as initial sources to select the training data used to build the modules for classification. We collected data from different sources. While all of the data sets had information on geographical location and associated class, their original time series have been collected from different data sources, such as Sentinel-2, HLS (Harmonized Landsat-Sentinel), Landsat-ETM and Landsat-OLI. For the LUC-Brasil maps, only the geographical locations and associated classes were used. All of the time series were collected from Landsat imagery.
+
+These data sets are openly available in the Github repository [lulcbrasil-samples](https://github.com/restore-plus/lulcbrasil-samples). 
 
 ### Land Use and Land Cover in Baixo Tocantins (1996)
 
@@ -101,7 +102,8 @@ The following table presents the metadata of this dataset:
 | Temporal Resolution  | 3-month composites (4 data points per year)|
 | Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
 | Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR` |
-| Land Cover Classes   | `Small-Scale Agriculture`, `Water Bodies`, `Primary Forest`, `Others`, `Clean Pasture`, `Dirty Pasture and Pasture with Regeneration`, `Urbanized Area`, `Advanced Secondary Vegetation`, `Initial Secondary Vegetation`|                         
+| Land Cover Classes   | `Small-Scale Agriculture`, `Water Bodies`, `Primary Forest`, `Others`, `Clean Pasture`, `Dirty Pasture and Pasture with Regeneration`, `Urbanized Area`, `Advanced Secondary Vegetation`, `Initial Secondary Vegetation`| 
+| Note | Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images | 
 | Source            | Anielli Souza, Miguel Monteiro, Isabel Escada  (INPE)|
 
 
@@ -116,6 +118,7 @@ The following table presents the metadata of this dataset:
 | Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
 | Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR`|
 | Land Cover Classes   | `Small-Scale Agriculture`, `Water`, `Forest`, `Others`, `Clean Pasture`, `Dirty Pasture and Pasture with Regeneration`, `Urban Area`, `Advanced Secondary Vegetation`, `Secondary Vegetation`, `Large-Scale Agriculture`|
+| Note | Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images | 
 | Source            | Anielli Souza, Miguel Monteiro, Isabel Escada  (INPE)|
  
 
@@ -124,11 +127,12 @@ The following table presents the metadata of this dataset:
 | Region               | Baixo Tocantins in Para state (Brazil)|
 | --- | --- |
 | Number of Time Series | `533`     |
-| Satellite-Sensor     | `HLSL30`|
+| Satellite-Sensor     | LANDSAT-OLI |
 | Spatial Resolution   | 30 meters |
 | Time Extent          | `2021-01-01` to `2021-12-31`|
 | Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
 | Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR` |
+| Note | Original data collected using HLS (Harmonized Landsat Sentinel) images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images | 
 | Source            | Anielli Souza, Miguel Monteiro, Isabel Escada  (INPE)|
 
 
@@ -156,6 +160,7 @@ The following table presents the metadata of this dataset:
 | Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
 | Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR` |
 | Land Cover Classes   | `Forest` |
+| Note | Original data collected using HLS (Harmonized Landsat Sentinel) images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images |
 | Source           | Luis Sadeck  (INPE) |  
 
 
@@ -184,6 +189,7 @@ The following table presents the metadata of this dataset:
 | Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR2` |
 | Spectral Indices     | `NDVI`, `EVI`, , `NBR` |
 | Land Cover Classes   | `Clear_Cut_Bare_Soil`, `Clear_Cut_Burned_Area`, `Clear_Cut_Vegetation`, `Forest`, `Mountainside_Forest`, `Riparian_Forest`, `Seasonally_Flooded`, `Water`, `Wetland` |
+| Note | Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images |
 | Source           | Anielli Souza, Ana Paula Del'Asta, Ana Rorato (INPE) |
 
 ### Land Use and Land Cover in Amazon Biome using LANDSAT for 2013-2014
@@ -211,6 +217,7 @@ The following table presents the metadata of this dataset:
 | Spectral Bands       | `BLUE`, `GREEN`, `RED`, `NIR08`, `SWIR16`, `SWIR22`|
 | Spectral Indices     | `NDVI`, `EVI` |
 | Land Cover Classes   | `Semi-Perenial Agriculture`, `Annual Agriculture 1 cycle`, `Annual Agriculture 2 cycles`, `Perenial Agriculture`, `Water Bodies`, `Shrubby Pasture`, `Herbaceous Pasture`, `Silviculture`, `Secondary Vegetation` |
+| Note | Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images |
 | Source          | Empresa Brasileira de Pesquisa Agropecuária - EMBRAPA |                                                                           
 
 ### Land Use and Land Cover in Legal Amazon using LANDSAT for 2021-2022
@@ -227,6 +234,7 @@ The following table presents the metadata of this dataset:
 | Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR` |
 | Land Cover Classes   | `1ciclo`, `2ciclos`, `agua`, `past_arb`, `past_herb`, `semiperene`, `veg_natural` |
 | Land Cover Classes   | `Semi-Perenial Agriculture`, `Annual Agriculture 1 cycle`, `Annual Agriculture 2 cycles`, `Water Bodies`, `Shrubby Pasture`, `Herbaceous Pasture`, `Natural Vegetation` |
+| Note | Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images |
 | Source          | Empresa Brasileira de Pesquisa Agropecuária - EMBRAPA |  
 
 

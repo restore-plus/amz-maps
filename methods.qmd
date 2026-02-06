@@ -4,21 +4,22 @@
 
 The Brazilian National Inventory of Greenhouse Gases Emissions (Inventory) defines a set of land use and land cover classes to be used to estimate the GHG emissions from the AFOLU (Agriculture, Forest and Other Land Uses) sector. However, some of these classes cannot reliably be identified in LANDSAT images, even with advanced machine learning methods. Therefore, the LUC-Brazil project has defined a set of classes relevant to the Inventory shown in @tbl-classes. These classes will later be converted  conversion to the Inventory LUCC classes. 
 
-|   IPCC Classes |  LUC BRAZIL Amazonia       |
-|----------------|----------------------------|
-| Forest         |  Primary Forest            |
-|                |  Secondary Vegetation      |  
-|                | Silviculture               | 
-| Cropland       | Annual Agriculture         | 
-|                | Semi-Perennial Agriculture | 
-|                | Perennial Agriculture      | 
-| Grassland      | Pasture                    |
-|                | Natural Non-Forest Vegetation |
-| Wetland        | Water Bodies               | 
-|                | Wetlands                   |
-| Settlements    | Urban Areas                |
-| Others         | Mining                        |  
-|                | Deforestation    |
+|   IPCC Classes |  LUC BRAZIL Amazonia       | Description | 
+|----------------|----------------------------|-------------|
+| Forest         |  Primary Forest            | Natural forest as defined by PRODES |
+|                |  Secondary Vegetation      | Regenerated or restored natural forest post-clear cuts |
+|                | Silviculture               | Planted forest with exotic species | 
+| Cropland       | Annual Agriculture         | One-cycle and two-cycle agriculture, mostly soy with corn or soy with cotton | 
+|                | Semi-Perennial Agriculture | Sugarcane farms | 
+|                | Perennial Agriculture      | Cocoa and Palm Oil large-scale plantations | 
+| Grassland      | Pasture                    | Cattle-raising areas | 
+|                | Natural Non-Forest Vegetation | Cerrado areas inside Amazon biome | 
+|                | Non-forest Secondary Vegetation | Regenerated or restored cerrado areas post-clear cuts |
+| Wetland        | Water Bodies               | Rivers and Lakes | 
+|                | Wetlands                   | Flooded area 
+| Settlements    | Urban Areas                | Yearly or seasonally flooded areas with vegetation  | 
+| Others         | Mining                     |  Large and medium-sized open-air mineral extraction | 
+|                | Deforestation    | Areas cleared in the current year | 
 
 
 : LULC classes in  LUC-Brazil Amazonia {#tbl-classes}
