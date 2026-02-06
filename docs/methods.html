@@ -211,140 +211,66 @@ div.csl-indent {
   
 
 </header><section id="land-use-and-land-cover-classes" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="land-use-and-land-cover-classes">Land Use and Land Cover Classes</h2>
-<p>The Brazilian National Inventory of Greenhouse Gases Emissions (Inventory) defines a set of land use and land cover classes to be used to estimate the GHG emissions from the AFOLU (Agriculture, Forest and Other Land Uses) sector. However, some of these classes cannot reliably be identified in LANDSAT images, even with advanced machine learning methods. Therefore, the LUC-Brazil project provides a conversion from the Inventory LUCC classes to what can be mapped using LANDSAT, as shown in <a href="#tbl-classes">Table&nbsp;<span>1</span></a>.</p>
+<p>The Brazilian National Inventory of Greenhouse Gases Emissions (Inventory) defines a set of land use and land cover classes to be used to estimate the GHG emissions from the AFOLU (Agriculture, Forest and Other Land Uses) sector. However, some of these classes cannot reliably be identified in LANDSAT images, even with advanced machine learning methods. Therefore, the LUC-Brazil project has defined a set of classes relevant to the Inventory shown in <a href="#tbl-classes">Table&nbsp;<span>1</span></a>. These classes will later be converted conversion to the Inventory LUCC classes.</p>
 <div id="tbl-classes" class="anchored">
 <table class="table">
-<caption>Table&nbsp;1: Correspondence between LULC classes in the Inventory and LUC=Brazil</caption>
-<colgroup>
-<col style="width: 21%">
-<col style="width: 41%">
-<col style="width: 37%">
-</colgroup>
+<caption>Table&nbsp;1: LULC classes in LUC-Brazil Amazonia</caption>
 <thead><tr class="header">
 <th>IPCC Classes</th>
-<th>Inventory classes</th>
 <th>LUC BRAZIL Amazonia</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Forest</td>
-<td>Managed Forest</td>
 <td>Primary Forest</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>Unmanaged Forest</td>
-<td>Primary Forest</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Secondary Forest</td>
-<td>Secondary Forests</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Selective Logging</td>
-<td>Primary Forest</td>
+<td>Secondary Vegetation</td>
 </tr>
 <tr class="odd">
 <td></td>
 <td>Silviculture</td>
-<td>Silviculture</td>
 </tr>
 <tr class="even">
-<td></td>
-<td>Other Forested Areas</td>
-<td>Primary Forest</td>
-</tr>
-<tr class="odd">
 <td>Cropland</td>
 <td>Annual Agriculture</td>
-<td>Annual Agriculture</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Semi-Perennial Agriculture</td>
-<td>Semi-Perennial Agriculture</td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Perennial Agriculture</td>
-<td>Perennial Agriculture</td>
+<td>Semi-Perennial Agriculture</td>
 </tr>
 <tr class="even">
+<td></td>
+<td>Perennial Agriculture</td>
+</tr>
+<tr class="odd">
 <td>Grassland</td>
 <td>Pasture</td>
-<td>Pasture</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Degraded Pasture</td>
-<td>Pasture.</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>Managed Grasslands</td>
-<td>not mapped</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Unmanaged Grasslands</td>
 <td>Natural Non-Forest Vegetation</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Sucessional Grasslands</td>
-<td>not mapped</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Other Managed Grasslands</td>
-<td>not mapped</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Other Managed Grasslands</td>
-<td>not mapped</td>
 </tr>
 <tr class="odd">
 <td>Wetland</td>
 <td>Water Bodies</td>
-<td>Water Bodies</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>Other wetlands</td>
 <td>Wetlands</td>
 </tr>
 <tr class="odd">
 <td>Settlements</td>
-<td>Human Settlements</td>
 <td>Urban Areas</td>
 </tr>
 <tr class="even">
 <td>Others</td>
-<td>Dunes</td>
-<td>Dunes</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>Rocky outcrop</td>
-<td>Rocky outcrop</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Mining</td>
 <td>Mining</td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>Bare Soil</td>
 <td>Deforestation</td>
-</tr>
-<tr class="even">
-<td></td>
-<td>Unobserved Areas</td>
-<td>Unobserved Areas</td>
 </tr>
 </tbody>
 </table>
@@ -364,7 +290,7 @@ div.csl-indent {
 <strong>Temporal Processing and Year-Specific Refinement</strong>: Multi-year rules refine classifications by analyzing temporal patterns. Individual annual masks undergo sequential reclassification rules.</li>
 </ol></section><section id="stage-1-datacube-generation" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="stage-1-datacube-generation">Stage 1: Datacube Generation</h2>
 <p>The pipeline begins by ingesting raw Landsat imagery from two distinct sources, each optimized for different temporal periods. This stage produces regularized datacubes with consistent 30m spatial resolution and regular temporal intervals. These sources are described in the “Data” section.</p>
-<p>Machine learning and deep learning (ML/DL) classification algorithms require the input data to be consistent. The dimensionality of the data used for training the model has to be the same as that of the data to be classified. There should be no gaps and no missing values. Thus, to use machine learning algorithms for remote sensing data, image collections should be converted to regular data cubes. The LUC-Brasil project uses regular data cubes produced by GLAD (Global Land Analysis &amp; Discovery) from the University of Maryland for the period 2000-2015 and by the Brazil Data Cube for the period 2015-2025. The reason to use the GLAD data before 2015 is the limitations of the Landsat-5 and Landsat-7 satellites which were available in this period. The team at University of Maryland invested in reducing the radiometric and geometric problems of these satellites. To do so, they chose a two-month interval for their time series. By contrast, images in the Brazil Data Cube from 2015 onwards rely primarily on the Landsat-8 satellite, which has a much better geometrical and radiometric quality than the previous Landsat satellites. For this reason, images from 2015 onwards have a one-month temporal interval. This multi-source temporal integration enables robust classification across the 25-year analysis period (2000-2025) despite varying data availability.</p>
+<p>Machine learning and deep learning (ML/DL) classification algorithms require the input data to be consistent. The dimensionality of the data used for training the model has to be the same as that of the data to be classified. There should be no gaps and no missing values. Thus, to use machine learning algorithms for remote sensing data, image collections should be converted to regular data cubes. The LUC-Brasil project uses regular data cubes produced by GLAD (Global Land Analysis &amp; Discovery) from the University of Maryland for the period 2000-2015 and by the Brazil Data Cube for the period 2015-2025. The reason to use the GLAD data before 2015 is the limitations of the Landsat-5 and Landsat-7 satellites which were available in this period. The team at University of Maryland invested in reducing the radiometric and geometric problems of these satellites. To do so, they chose a two-month interval for their time series. By contrast, images in the Brazil Data Cube from 2015 onwards rely primarily on the Landsat-8 satellite, which has a much better geometrical and radiometric quality than the previous Landsat satellites. For this reason, images from 2015 onwards have a one-month temporal interval. This multi-source temporal integration enables robust classification across the 25-year analysis period (2000-2024) despite varying data availability.</p>
 <p>The Brazilian Amazon biome was divided into four ecoregions, according to their intrinsic natural variability and different patterns of human occupation (see <a href="#fig-ecoregions">Figure&nbsp;<span>1</span></a>). Ecoregion 1 covers the Amapá and Roraima states, and parts of the Pará and Amazonas states in the North side of the Negro, Solimoes and Amazonas rivers. This regions is largely preserved, but has hot-spots of deforestation in Roraima. It also has a sizeable non-forest area in Roraima. Ecoregion 2 is the area bound by the Madeira and Negro rivers. It is mostly composed of native forest, except for the State of Acre and the recent expansion of deforestation along the Transamazonica road. Ecoregion 3 is the most affected by deforestation since the 1990s, which large areas of clearings used for pasture and agriculture. This is the area of Amazonia that has registered the largest deforestation rates measured by INPE’s PRODES system. Ecoregion 4 includes area of long-term human occupation in the Pará State (Zona Bragantina) where there is significant presence of planted forests and perennial agriculture (e.g., cocoa and oil palm). It is also the region of contact with the Cerrado areas in the State of Maranhão.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -386,7 +312,7 @@ div.csl-indent {
 </div>
 </div>
 <p>The sample quality assurance part uses self-organizing maps (SOM), a clustering method where high-dimensional data is mapped into a two-dimensional map, The input data for quality assessment is a set of training samples, which are high-dimensional data; for example, a time series with 25 instances of 4 spectral bands has 100 dimensions. When projecting a high-dimensional dataset into a 2D SOM map. Each time series will be mapped to one of the neurons. Since the number of neurons is smaller than the number of classes, each neuron will be associated with many time series. The resulting 2D map will be a set of clusters. The neighbors of each neuron of a SOM map provide information on intraclass and interclass variability, which is used to detect noisy samples. The methodology of using SOM for sample quality assessment is discussed in detail in the reference paper <span class="citation" data-cites="Santos2021a"><a href="#ref-Santos2021a" role="doc-biblioref">[1]</a></span>.</p>
-<p>Based on the SOM analysis, we selected two sample collections, one for the 2000-2015 period, and other for the 2015-2025 period, which are summarized below. We first present the training set for 2000-2015.</p>
+<p>Based on the SOM analysis, we selected two sample collections, one for the 2000-2014 period, and other for the 2015-2024 period, which are summarized below. We first present the training set for 2000-2014.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/e-sensing/sits/">sits</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -418,7 +344,7 @@ div.csl-indent {
 </div>
 </div>
 <p>Some of the classes used in the training sample set are not included in the final LUC-Brazil classes. These include classes such as “Riparian_Forest” and “Seasonally_Flooded”. These classes are useful to discriminate between different types of natural forests and are later aggregated into the “Forest” class. Other classes produced by LUC-Brazil such as “Perennial Vegetation” are not present in the data set and are added later using reclassification rules. Extensive testing by the team shows that this class is not detectable using Landsat-5 and Landsat-7 images.</p>
-<p>For the period 2016-2020, the distribution of the training set is shown below.</p>
+<p>For the period 2015-2020, the distribution of the training set is shown below.</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># retrieve the samples for the 2000-2015 period</span></span>
 <span><span class="va">samples_amz_2020</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"./etc/samples_amz_2010.rds"</span><span class="op">)</span></span>
@@ -442,7 +368,7 @@ div.csl-indent {
 </div>
 </section><section id="stage-3-model-training" class="level2"><h2 class="anchored" data-anchor-id="stage-3-model-training">Stage 3: Model Training</h2>
 <p>After experimenting with the different algorithms available in `sits, we chose the RandomForest method, which provides a reliable performance in the case of noisy data such as the images from Landsat-5 and Landsat-7 satellite. We performed a 5-fold validation of both models and present thre results below.</p>
-<p>The confusion matrix and the metrics for the 2000-2015 model are shown below.</p>
+<p>The confusion matrix and the metrics for the 2000-2014 model are shown below.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-kfold-2010-matrix" class="quarto-figure quarto-figure-center anchored">
@@ -455,18 +381,18 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-kfold-2010-metrics" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="./images/model_2010_metrics.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;4: Metrics for the 2000-2015 Random Forest model</figcaption></figure>
+<figcaption class="figure-caption">Figure&nbsp;4: Metrics for the 2000-2014 Random Forest model</figcaption></figure>
 </div>
 </div>
 </div>
 <p>The results of the validation show a good degree of discrimination for the classes “Annual_Agriculture”, “Semi-Perennial Agriculture”, and “Herbaceous Pasture”. The natural forest classes (“Forest”, “Mountainside_Forest”, “Riparian_Forest” and “Seasonally_Flooded”) show a reasonable degree of internal confusion, which is not a big problem, since they will later aggreggated into a single class (“Forest”). The confusion between “Secondary_Vegetation” and “Forest” is to be expected; this confusion is solved using the PRODES maps.</p>
 <p>Overall, the main problem is the distinction between the “Shrubby Pasture”, “Secondary Vegetation” and “Silviculture” classes. While the TerraClass maps provide a good basis for improving the classification of “Semi=Perennial Agriculture” and “Silviculture” classes, the main problem remains in the distinction between “Shrubby Pasture” and “Secondary Vegetation”. Indeed, these classes are hard to separate even in higher-resolution images.</p>
-<p>The confusion matrix and the metrics for the 2016-2025 model are shown below.</p>
+<p>The confusion matrix and the metrics for the 2015-2024 model are shown below.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-kfold-2020-matrix" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="./images/model_2020_conf_matrix.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;5: Confusion matrix for the 2016-2025 Random Forest model</figcaption></figure>
+<figcaption class="figure-caption">Figure&nbsp;5: Confusion matrix for the 2015-2024 Random Forest model</figcaption></figure>
 </div>
 </div>
 </div>
@@ -474,11 +400,11 @@ div.csl-indent {
 <div class="cell-output-display">
 <div id="fig-kfold-2020-metrics" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="./images/model_2020_metrics.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption class="figure-caption">Figure&nbsp;6: Metrics for the 2016-2025 Random Forest model</figcaption></figure>
+<figcaption class="figure-caption">Figure&nbsp;6: Metrics for the 2015-2024 Random Forest model</figcaption></figure>
 </div>
 </div>
 </div>
-<p>The results show that the 2016-2025 model discriminates the classes better than the 2000-2015 one. This outcome is expected due to the better quality of the Landsat-8 images. Compared to the 2000-2015 model, the “Silviculture” class is better defined, and the distinction between “Secondary Vegetation” and “Herbaceous Pasture” improves. The same remarks made earlier about the natural classes apply also in this case.</p>
+<p>The results show that the 2014-2024 model discriminates the classes better than the 2000-2014 one. This outcome is expected due to the better quality of the Landsat-8 images. Compared to the 2000-2014 model, the “Silviculture” class is better defined, and the distinction between “Secondary Vegetation” and “Herbaceous Pasture” improves. The same remarks made earlier about the natural classes apply also in this case.</p>
 </section><section id="stage-4-datacube-classification" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="stage-4-datacube-classification">Stage 4: Datacube Classification</h2>
 <p>The datacube classification is done on an yearly basis. For each year, each spatial location (pixel) of the data cubes is associated to a time series. Each time series is then classified by the machine learning model. The result is a classified map for each year. The classification process is described in the detail in the <a href="https://e-sensing.github.io/sitsbook/">on-line book</a> about the <code>sits</code> package.</p>
 </section><section id="stage-5-reclassification-rules" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="stage-5-reclassification-rules">Stage 5: Reclassification rules</h2>

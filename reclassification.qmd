@@ -79,29 +79,14 @@ This rule includes areas which PRODES identifies as "Hidrography" and and maps t
 
 This rule reclassifies as "Natural Non-Forest" pixels which fall inside the PRODES mask of "Non-Forest" class.
 
-## Reclassification Part 2: Multi-year Rules {-} 
+## Reclassification Part 2: Year-Specific Mask Generation {-}
+
 
 ### Water Consistency Rule {-}
 
 Processes a 3-year window centered on 2019, identifying pixels classified as "Water" across any of the years 2018, 2019, and 2020 are reclassified as "Water" for all three years.
 
 ### Perennial Agriculture Trajectory{-}
-
-Processes data for each of 5 specific years (2009, 2011, 2013, 2019, 2021), which lie between years where TerraClass exists. For each year, reclassifies a pixel as "Perennial Agriculture" if the pixel has this label in the TerraClass map of the following year. 
-
-### Secondary Vegetation - Pasture Consistency {-}
-
-Processes all pixels from 2001 to 2021 considering a period of three consecutive years. For each 3-year window, if the pixel class in the current year is "Secondary Vegetation" and "Pasture" in both the previous and the subsequent years, it is reclassified as "Pasture". 
-
-
-4. **Annual Agriculture (Lines 164-192)**: Builds a temporal brick from all years and applies agricultural detection. The brick is then split back into individual years. Output is versioned as `temporal-mask-4`.
-
-## Stage 5: Year-Specific Mask Generation {-}
-
-The final stage generates individual annual masks for years 2000-2022 by applying 19-24 sequential reclassification rules to the temporally-processed classifications. Each year has a dedicated script (e.g., `mask-2015.R`, `mask-2020.R`) that follows a common 22-step pipeline.
-
-
-## Perennial Agriculture Rule
 
 This rule validates perennial crop classifications by consulting TerraClass reference data from surrounding years (year-1 and year+1). Perennial crop pixels are only retained if TerraClass confirms their presence in adjacent years, reducing false positives.
 
@@ -115,15 +100,9 @@ The rule targets specific years where TerraClass surveys are available:
 | 2019 | 2018 | 2020 | Between consecutive surveys |
 | 2021 | 2020 | 2022 | Between consecutive surveys |
 
+### Secondary Vegetation - Pasture Consistency {-}
 
-## Secondary Vegetation-Pasture Rule 
+This rule analyzes secondary vegetation (SV) to pasture transitions by examining 3-year trajectories. This rule identifies pixels classified as SV that are surrounded by pasture classifications in adjacent years, helping distinguish true secondary vegetation from misclassified pasture areas.
 
-This analyzes vegetation-secondary (SV) to pasture transitions by examining 3-year trajectories. This rule identifies pixels classified as SV that are surrounded by pasture classifications in adjacent years, helping distinguish true secondary vegetation from misclassified pasture areas.
-
-The rule processes 21 consecutive years from 2001 to 2025, creating overlapping 3-year windows. For each target year, the algorithm examines year-1, year, and year+1 classifications to detect VS-pasture patterns.
-
-## Annual Agriculture Rule
-
-This rule identifies annual agriculture patterns by analyzing the complete temporal series of all years simultaneously. Unlike the previous rules that process specific year subsets, this rule considers all years and applies agricultural detection logic across the entire time series.
-
+The rule processes 21 consecutive years from 2001 to 2025, creating overlapping 3-year windows. For each target year, the algorithm examines year-1, year, and year+1 classifications to detect SV-pasture patterns.
 

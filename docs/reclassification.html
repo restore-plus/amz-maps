@@ -149,11 +149,29 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#base-mask-preparation" id="toc-base-mask-preparation" class="nav-link active" data-scroll-target="#base-mask-preparation">Base Mask Preparation</a></li>
-  <li><a href="#water-consistency" id="toc-water-consistency" class="nav-link" data-scroll-target="#water-consistency">Water Consistency</a></li>
-  <li><a href="#stage-5-year-specific-mask-generation" id="toc-stage-5-year-specific-mask-generation" class="nav-link" data-scroll-target="#stage-5-year-specific-mask-generation">Stage 5: Year-Specific Mask Generation</a></li>
-  <li><a href="#perennial-agriculture-rule" id="toc-perennial-agriculture-rule" class="nav-link" data-scroll-target="#perennial-agriculture-rule">Perennial Agriculture Rule</a></li>
-  <li><a href="#secondary-vegetation-pasture-rule" id="toc-secondary-vegetation-pasture-rule" class="nav-link" data-scroll-target="#secondary-vegetation-pasture-rule">Secondary Vegetation-Pasture Rule</a></li>
+  <li><a href="#reclassification-part-1-yearly-rules-defined-by-masks" id="toc-reclassification-part-1-yearly-rules-defined-by-masks" class="nav-link" data-scroll-target="#reclassification-part-1-yearly-rules-defined-by-masks">Reclassification Part 1: Yearly Rules Defined by Masks</a>
+  <ul class="collapse">
+  <li><a href="#secondary-vegetation-rule" id="toc-secondary-vegetation-rule" class="nav-link" data-scroll-target="#secondary-vegetation-rule">Secondary Vegetation Rule</a></li>
+  <li><a href="#current-deforestation-rule" id="toc-current-deforestation-rule" class="nav-link" data-scroll-target="#current-deforestation-rule">Current Deforestation Rule</a></li>
+  <li><a href="#residuals-rule" id="toc-residuals-rule" class="nav-link" data-scroll-target="#residuals-rule">Residuals Rule</a></li>
+  <li><a href="#silviculture-rule-1" id="toc-silviculture-rule-1" class="nav-link" data-scroll-target="#silviculture-rule-1">Silviculture Rule #1</a></li>
+  <li><a href="#silviculture-rule-2" id="toc-silviculture-rule-2" class="nav-link" data-scroll-target="#silviculture-rule-2">Silviculture Rule #2</a></li>
+  <li><a href="#semi-perennial-agriculture-rule-1" id="toc-semi-perennial-agriculture-rule-1" class="nav-link" data-scroll-target="#semi-perennial-agriculture-rule-1">Semi-Perennial Agriculture Rule #1</a></li>
+  <li><a href="#semi-perennial-agriculture-rule-2" id="toc-semi-perennial-agriculture-rule-2" class="nav-link" data-scroll-target="#semi-perennial-agriculture-rule-2">Semi-Perennial Agriculture Rule #2</a></li>
+  <li><a href="#semi-perennial-agriculture-rule-3" id="toc-semi-perennial-agriculture-rule-3" class="nav-link" data-scroll-target="#semi-perennial-agriculture-rule-3">Semi-Perennial Agriculture Rule #3</a></li>
   <li><a href="#annual-agriculture-rule" id="toc-annual-agriculture-rule" class="nav-link" data-scroll-target="#annual-agriculture-rule">Annual Agriculture Rule</a></li>
+  <li><a href="#mining-rule" id="toc-mining-rule" class="nav-link" data-scroll-target="#mining-rule">Mining Rule</a></li>
+  <li><a href="#urban-areas-rule" id="toc-urban-areas-rule" class="nav-link" data-scroll-target="#urban-areas-rule">Urban Areas Rule</a></li>
+  <li><a href="#water-bodies-rule-1" id="toc-water-bodies-rule-1" class="nav-link" data-scroll-target="#water-bodies-rule-1">Water Bodies Rule #1</a></li>
+  <li><a href="#water-bodies-rule-2" id="toc-water-bodies-rule-2" class="nav-link" data-scroll-target="#water-bodies-rule-2">Water Bodies Rule #2</a></li>
+  <li><a href="#natural-non-forest-areas-rule" id="toc-natural-non-forest-areas-rule" class="nav-link" data-scroll-target="#natural-non-forest-areas-rule">Natural Non-Forest Areas Rule</a></li>
+  </ul></li>
+  <li><a href="#reclassification-part-2-year-specific-mask-generation" id="toc-reclassification-part-2-year-specific-mask-generation" class="nav-link" data-scroll-target="#reclassification-part-2-year-specific-mask-generation">Reclassification Part 2: Year-Specific Mask Generation</a>
+  <ul class="collapse">
+  <li><a href="#water-consistency-rule" id="toc-water-consistency-rule" class="nav-link" data-scroll-target="#water-consistency-rule">Water Consistency Rule</a></li>
+  <li><a href="#perennial-agriculture-trajectory" id="toc-perennial-agriculture-trajectory" class="nav-link" data-scroll-target="#perennial-agriculture-trajectory">Perennial Agriculture Trajectory</a></li>
+  <li><a href="#secondary-vegetation---pasture-consistency" id="toc-secondary-vegetation---pasture-consistency" class="nav-link" data-scroll-target="#secondary-vegetation---pasture-consistency">Secondary Vegetation - Pasture Consistency</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/restore-plus/docs/edit/quarto/reclassification.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/restore-plus/docs/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -186,105 +204,79 @@ ul.task-list li input[type="checkbox"] {
 <li>Water Rules: include water mask from TerraClass;</li>
 <li>Multi-year transitions: considers three consecutive years to ensure consistency of more difficult classes (e.g., conflicts between Shrubby Pasture and Secondary Vegetation).</li>
 </ol>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Intermediate Code</th>
-<th>Final Class</th>
-<th>Label Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>100</td>
-<td>1</td>
-<td>Two-cycle agriculture</td>
-</tr>
-<tr class="even">
-<td>101</td>
-<td>2</td>
-<td>Semi-perennial agriculture</td>
-</tr>
-<tr class="odd">
-<td>102</td>
-<td>3</td>
-<td>Water</td>
-</tr>
-<tr class="even">
-<td>103</td>
-<td>4</td>
-<td>Forest</td>
-</tr>
-<tr class="odd">
-<td>106</td>
-<td>5</td>
-<td>Silviculture</td>
-</tr>
-<tr class="even">
-<td>107</td>
-<td>6</td>
-<td>Secondary vegetation</td>
-</tr>
-<tr class="odd">
-<td>108</td>
-<td>7</td>
-<td>Mining</td>
-</tr>
-<tr class="even">
-<td>109</td>
-<td>8</td>
-<td>Urban area</td>
-</tr>
-<tr class="odd">
-<td>111</td>
-<td>9</td>
-<td>Natural non-forest</td>
-</tr>
-<tr class="even">
-<td>104</td>
-<td>10</td>
-<td>Pasture</td>
-</tr>
-<tr class="odd">
-<td>105</td>
-<td>11</td>
-<td>Wetlands</td>
-</tr>
-<tr class="even">
-<td>110</td>
-<td>12</td>
-<td>Deforestation</td>
-</tr>
-<tr class="odd">
-<td>112</td>
-<td>13</td>
-<td>Perennial agriculture</td>
-</tr>
-</tbody>
-</table>
-<p>The reclassification rules fall into six functional categories:</p>
-<p>CLASSIFICATION[“Initial Classification<br>From Stage 2 + Stage 4”]</p>
-<section id="base-mask-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="base-mask-preparation">Base Mask Preparation</h2>
-<p>Base Mask Preparation is a key part in the classification pipeline. It prepares reference masks from two authoritative external datasets: PRODES deforestation monitoring data and Terraclass land use and land cover maps. These base masks serve as ground truth references for all downstream processing stages.</p>
+<p>The rules are described below, in the order on which they are applied.</p>
+<section id="base-mask-preparation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="base-mask-preparation">Base Mask Preparation</h2>
+<p>Base Mask Preparation is a key part in the classification pipeline. It prepares reference masks from two authoritative external datasets: PRODES deforestation monitoring data, Terraclass land use and land cover maps, and water masks. These base masks serve as ground truth references for all downstream processing stages.</p>
 <p>The base mask preparation includes geomtrically adjusting the PRODES deforestation mask to remove some inconsistencies in the border pixels which distort the overall statistics.</p>
 </section>
-<section id="water-consistency" class="level2">
-<h2 class="anchored" data-anchor-id="water-consistency">Water Consistency</h2>
-<p>:</p>
-<ol type="1">
-<li><strong>Water Consistency (Lines 32-58)</strong>: Processes a 3-year window centered on 2019, identifying pixels classified as water across all three years. Output is versioned as <code>temporal-mask-1</code>.</li>
-<li><strong>Perene Trajectory (Lines 61-107)</strong>: For each of 5 specific years, loads Terraclass data from surrounding years (year±1) and validates perene classifications. Output is versioned as <code>temporal-mask-2</code>.</li>
-<li><strong>VS-Pasture Classification (Lines 110-161)</strong>: For years 2001-2021, analyzes 3-year windows to identify vegetation-secondary pasture transitions. Output is versioned as <code>temporal-mask-3</code>.</li>
-<li><strong>Annual Agriculture (Lines 164-192)</strong>: Builds a temporal brick from all years and applies agricultural detection. The brick is then split back into individual years. Output is versioned as <code>temporal-mask-4</code>.</li>
-</ol>
+<section id="reclassification-part-1-yearly-rules-defined-by-masks" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="reclassification-part-1-yearly-rules-defined-by-masks">Reclassification Part 1: Yearly Rules Defined by Masks</h2>
+<section id="secondary-vegetation-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="secondary-vegetation-rule">Secondary Vegetation Rule</h3>
+<p>This rule distinguishes forested area in Amazonia between primary forests and secondary vegetation. To that aim, it uses the PRODES mask, which indicates the primary forest area. The secondary vegetation areas are those that have been deforested and then abandoned so that a forest regeneration process has started.</p>
 </section>
-<section id="stage-5-year-specific-mask-generation" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="stage-5-year-specific-mask-generation">Stage 5: Year-Specific Mask Generation</h2>
-<p>The final stage generates individual annual masks for years 2000-2022 by applying 19-24 sequential reclassification rules to the temporally-processed classifications. Each year has a dedicated script (e.g., <code>mask-2015.R</code>, <code>mask-2020.R</code>) that follows a common 22-step pipeline.</p>
+<section id="current-deforestation-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="current-deforestation-rule">Current Deforestation Rule</h3>
+<p>For each year, the PRODES masks also contains information on forest removal on the current rule. This rule ensures that all areas deforested in a given year are not marked as “Pasture” or “Agriculture”, since TerraClass also follows the same convention of not classifying land use for areas deforested in the year it is produced.</p>
 </section>
-<section id="perennial-agriculture-rule" class="level2">
-<h2 class="anchored" data-anchor-id="perennial-agriculture-rule">Perennial Agriculture Rule</h2>
+<section id="residuals-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="residuals-rule">Residuals Rule</h3>
+<p>This rule is necessary due to problems in the PRODES mask. Sine PRODES only observes one image per year for a given Landsat tile, some areas are not observed due to clouds and are masked as such. When such areas are visible in later years and then assigned as “residuals”. Since LUC-Brasil uses time series which enable removal of most cloudy areas, this rule assigns PRODES residuals to the “Pasture” class.</p>
+</section>
+<section id="silviculture-rule-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="silviculture-rule-1">Silviculture Rule #1</h3>
+<p>This rule improves the representation of silviculture (planted forests) by using TerraClass maps as a reference. Pixels in the LUC-Brasil maps are thus updated to reflect the TerraClass maos. This rule is applied only to the years where TerraClass maps are available. There is another rule (see below) that updates the “Silviculture” class in years without TerraClass maps.</p>
+</section>
+<section id="silviculture-rule-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="silviculture-rule-2">Silviculture Rule #2</h3>
+<p>This rule considers the case of pixels classified as “Silviculture” by LUC-Brasil which are not classified as such by TerraClass. These pixels are reclassified as “Pasture”.</p>
+</section>
+<section id="semi-perennial-agriculture-rule-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="semi-perennial-agriculture-rule-1">Semi-Perennial Agriculture Rule #1</h3>
+<p>This rule reclassifies the LUC-Brasil pixels to match the TerraClass “Semi-Perennial Agriculture” class, in the years where TerraClass maps are available.</p>
+</section>
+<section id="semi-perennial-agriculture-rule-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="semi-perennial-agriculture-rule-2">Semi-Perennial Agriculture Rule #2</h3>
+<p>This rule reclassifies the LUC-Brasil pixels which are classified as “Semi-Perennial Agriculture” but that do not match any agricultural label in the TerraClass maps. Such pixels are reclassified as “Pasture”. The rule applies in the years where TerraClass maps are available.</p>
+</section>
+<section id="semi-perennial-agriculture-rule-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="semi-perennial-agriculture-rule-3">Semi-Perennial Agriculture Rule #3</h3>
+<p>This rule reclassifies the LUC-Brasil pixels which are classified as “Semi-Perennial Agriculture” to match the TerraClass “Temporary Agriculture” class, in the years where TerraClass maps are available.</p>
+</section>
+<section id="annual-agriculture-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="annual-agriculture-rule">Annual Agriculture Rule</h3>
+<p>This rule reclassifies the LUC-Brasil pixels which are classified as “Semi-Perennial Agriculture” to match the TerraClass “Temporary Agriculture” class, in the years where TerraClass maps are available.</p>
+</section>
+<section id="mining-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="mining-rule">Mining Rule</h3>
+<p>This rule includes areas which TerraClass identifies as “Mining”, since the LUC-Brasil classes detected using Landsat do not provide a consistent basis for such classification.</p>
+</section>
+<section id="urban-areas-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="urban-areas-rule">Urban Areas Rule</h3>
+<p>This rule includes areas which TerraClass identifies as “Urban Areas”, since the LUC-Brasil classes detected using Landsat do not provide a consistent basis for such classification.</p>
+</section>
+<section id="water-bodies-rule-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="water-bodies-rule-1">Water Bodies Rule #1</h3>
+<p>This rule includes areas which TerraClass identifies as “Water Bodies” and maps them to the “Water” class, provided that LUC-Brasil did not identify them as either “Wetlands” or “Seasonally Flooded”.</p>
+</section>
+<section id="water-bodies-rule-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="water-bodies-rule-2">Water Bodies Rule #2</h3>
+<p>This rule includes areas which PRODES identifies as “Hidrography” and and maps them to the “Water” class, provided that LUC-Brasil did not identify them as either “Wetlands” or “Seasonally Flooded”.</p>
+</section>
+<section id="natural-non-forest-areas-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="natural-non-forest-areas-rule">Natural Non-Forest Areas Rule</h3>
+<p>This rule reclassifies as “Natural Non-Forest” pixels which fall inside the PRODES mask of “Non-Forest” class.</p>
+</section>
+</section>
+<section id="reclassification-part-2-year-specific-mask-generation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="reclassification-part-2-year-specific-mask-generation">Reclassification Part 2: Year-Specific Mask Generation</h2>
+<section id="water-consistency-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="water-consistency-rule">Water Consistency Rule</h3>
+<p>Processes a 3-year window centered on 2019, identifying pixels classified as “Water” across any of the years 2018, 2019, and 2020 are reclassified as “Water” for all three years.</p>
+</section>
+<section id="perennial-agriculture-trajectory" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="perennial-agriculture-trajectory">Perennial Agriculture Trajectory</h3>
 <p>This rule validates perennial crop classifications by consulting TerraClass reference data from surrounding years (year-1 and year+1). Perennial crop pixels are only retained if TerraClass confirms their presence in adjacent years, reducing false positives.</p>
 <p>The rule targets specific years where TerraClass surveys are available:</p>
 <table class="table">
@@ -336,16 +328,13 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="secondary-vegetation-pasture-rule" class="level2">
-<h2 class="anchored" data-anchor-id="secondary-vegetation-pasture-rule">Secondary Vegetation-Pasture Rule</h2>
-<p>This analyzes vegetation-secondary (SV) to pasture transitions by examining 3-year trajectories. This rule identifies pixels classified as SV that are surrounded by pasture classifications in adjacent years, helping distinguish true secondary vegetation from misclassified pasture areas.</p>
-<p>The rule processes 21 consecutive years from 2001 to 2025, creating overlapping 3-year windows. For each target year, the algorithm examines year-1, year, and year+1 classifications to detect VS-pasture patterns.</p>
+<section id="secondary-vegetation---pasture-consistency" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="secondary-vegetation---pasture-consistency">Secondary Vegetation - Pasture Consistency</h3>
+<p>This rule analyzes secondary vegetation (SV) to pasture transitions by examining 3-year trajectories. This rule identifies pixels classified as SV that are surrounded by pasture classifications in adjacent years, helping distinguish true secondary vegetation from misclassified pasture areas.</p>
+<p>The rule processes 21 consecutive years from 2001 to 2025, creating overlapping 3-year windows. For each target year, the algorithm examines year-1, year, and year+1 classifications to detect SV-pasture patterns.</p>
+
+
 </section>
-<section id="annual-agriculture-rule" class="level2">
-<h2 class="anchored" data-anchor-id="annual-agriculture-rule">Annual Agriculture Rule</h2>
-<p>This rule identifies annual agriculture patterns by analyzing the complete temporal series of all years simultaneously. Unlike the previous rules that process specific year subsets, this rule considers all years and applies agricultural detection logic across the entire time series.</p>
-
-
 </section>
 
 </main> <!-- /main -->
