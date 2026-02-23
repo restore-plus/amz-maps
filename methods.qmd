@@ -14,7 +14,6 @@ The Brazilian National Inventory of Greenhouse Gases Emissions (Inventory) defin
 |                | Perennial Agriculture      | Cocoa and Palm Oil large-scale plantations | 
 | Grassland      | Pasture                    | Cattle-raising areas | 
 |                | Natural Non-Forest Vegetation | Cerrado areas inside Amazon biome | 
-|                | Non-forest Secondary Vegetation | Regenerated or restored cerrado areas post-clear cuts |
 | Wetland        | Water Bodies               | Rivers and Lakes | 
 |                | Wetlands                   | Flooded area 
 | Settlements    | Urban Areas                | Yearly or seasonally flooded areas with vegetation  | 

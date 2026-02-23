@@ -1,2 +1,22 @@
 # Results {-}
 
+The results of the LUC-Brasil project for the Amazon biome are a series of maps containing land use and land cover classes for the period 2000-2024. In the first version of the product, described in this document, covers years 2000 to 2022. 
+
+## Data Availability
+
+The 2000-2022 LUCC maps for the Brazilian Amazon biome are available in [Zenodo](https://zenodo.org/records/17485846).
+
+## Main findings of the work 
+
+### Increase in agricultural area
+
+The area used for annual agriculture has increased significantly from about 1.0 Mha in 2000 to 8.6 Mha in 2022, the largest percentual gain for all mapped classes. This growth can be largely attributed to the expansion of soy plantations in the region.
+
+```{r}
+#| label: cover
+#| echo: false
+#| out-width: 90%
+knitr::include_graphics("./images/annual_agriculture.png") 
+```
+
+
