@@ -4,7 +4,7 @@ The results of the LUC-Brasil project for the Amazon biome are a series of maps 
 
 ## Data Availability
 
-The 2000-2022 LUCC maps for the Brazilian Amazon biome are available in [Zenodo](https://zenodo.org/records/17485846).
+The 2000-2022 LUCC maps for the Brazilian Amazon biome are available in [Zenodo](https://doi.org/10.5281/zenodo.18716512).
 
 ## Main findings of the work 
 

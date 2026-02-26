@@ -112,6 +112,13 @@ This rules ensures temporal consistency for the water areas. It is applied to th
 
 ### Cropland/Pasture Consistency
 
-This rule uses a three-year period to adjust misclassification scenarios and unlikely changes between cropland and pasture. For example, pixels labelled `cropland - pasture - cropland` are reclassified as `cropland - cropland - cropland`. 
+This rule uses a three-year period to adjust misclassification scenarios and unlikely changes between cropland and pasture. For example, pixels labelled `cropland - pasture - cropland` are reclassified as `cropland - cropland - cropland`. The three-year periods are those between TerraClass surveys:
+
+| Target Year | TerraClass Before (year-1) | TerraClass After (year+1) |
+| --- | --- | --- |
+| 2014 | 2015 | 2016 | 
+| 2016 | 2017 | 2018 |
+| 2018 | 2019 | 2020 |
+| 2020 | 2021 | 2022 |
 
 
