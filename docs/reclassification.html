@@ -171,6 +171,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#water-consistency-rule" id="toc-water-consistency-rule" class="nav-link" data-scroll-target="#water-consistency-rule">Water Consistency Rule</a></li>
   <li><a href="#perennial-agriculture-trajectory" id="toc-perennial-agriculture-trajectory" class="nav-link" data-scroll-target="#perennial-agriculture-trajectory">Perennial Agriculture Trajectory</a></li>
   <li><a href="#secondary-vegetation---pasture-consistency" id="toc-secondary-vegetation---pasture-consistency" class="nav-link" data-scroll-target="#secondary-vegetation---pasture-consistency">Secondary Vegetation - Pasture Consistency</a></li>
+  <li><a href="#temporal-water-consistency" id="toc-temporal-water-consistency" class="nav-link" data-scroll-target="#temporal-water-consistency">Temporal Water Consistency</a></li>
+  <li><a href="#croplandpasture-consistency" id="toc-croplandpasture-consistency" class="nav-link" data-scroll-target="#croplandpasture-consistency">Cropland/Pasture Consistency</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/restore-plus/docs/edit/quarto/reclassification.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/restore-plus/docs/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -332,6 +334,14 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="unnumbered anchored" data-anchor-id="secondary-vegetation---pasture-consistency">Secondary Vegetation - Pasture Consistency</h3>
 <p>This rule analyzes secondary vegetation (SV) to pasture transitions by examining 3-year trajectories. This rule identifies pixels classified as SV that are surrounded by pasture classifications in adjacent years, helping distinguish true secondary vegetation from misclassified pasture areas.</p>
 <p>The rule processes 21 consecutive years from 2001 to 2025, creating overlapping 3-year windows. For each target year, the algorithm examines year-1, year, and year+1 classifications to detect SV-pasture patterns.</p>
+</section>
+<section id="temporal-water-consistency" class="level3">
+<h3 class="anchored" data-anchor-id="temporal-water-consistency">Temporal Water Consistency</h3>
+<p>This rules ensures temporal consistency for the water areas. It is applied to the period 2015-2022.</p>
+</section>
+<section id="croplandpasture-consistency" class="level3">
+<h3 class="anchored" data-anchor-id="croplandpasture-consistency">Cropland/Pasture Consistency</h3>
+<p>This rule uses a three-year period to adjust misclassification scenarios and unlikely changes between cropland and pasture. For example, pixels labelled <code>cropland - pasture - cropland</code> are reclassified as <code>cropland - cropland - cropland</code>.</p>
 
 
 </section>

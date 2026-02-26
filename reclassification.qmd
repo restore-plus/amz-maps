@@ -106,3 +106,12 @@ This rule analyzes secondary vegetation (SV) to pasture transitions by examining
 
 The rule processes 21 consecutive years from 2001 to 2025, creating overlapping 3-year windows. For each target year, the algorithm examines year-1, year, and year+1 classifications to detect SV-pasture patterns.
 
+### Temporal Water Consistency
+
+This rules ensures temporal consistency for the water areas. It is applied to the period 2015-2022.
+
+### Cropland/Pasture Consistency
+
+This rule uses a three-year period to adjust misclassification scenarios and unlikely changes between cropland and pasture. For example, pixels labelled `cropland - pasture - cropland` are reclassified as `cropland - cropland - cropland`. 
+
+
