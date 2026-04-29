@@ -4,8 +4,6 @@ Esse diretório contém os cruzamentos espaciais entre os dados da 4 comunicaç�
 
 > O **ano base** para os cruzamentos foi 2016. No caso do PRODES, fez-se o uso da versão de 2025.
 
----
-
 ## Download
 
 Para baixar os cruzamentos gerados em `.zip`, [clique aqui](https://github.com/restore-plus/amz-maps/raw/refs/heads/main/tables/crosstable/2016/data/crosstable-4cn.zip). Para acessar os cruzamentos gerados individualemente [clique aqui](data/). 
