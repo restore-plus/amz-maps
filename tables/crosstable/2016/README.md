@@ -22,7 +22,7 @@ O formato das tabelas de cruzamento segue um padrão em que:
 
 **Exemplo:**
 
-| Reference              | <Classe 4CN>                                 |
+| Reference              | < Classe 4CN >                                 |
 |------------------------|----------------------------------------------|
 | < Classe base de dados > | < Número de pixels cruzados entre as classes > |
 | < Classe base de dados > | < Número de pixels cruzados entre as classes > |
