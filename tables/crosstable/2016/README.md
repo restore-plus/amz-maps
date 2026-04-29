@@ -57,8 +57,6 @@ Para os cruzamentos do Bioma Amazônia foram utilizados dados oficiais do PRODES
 | PRODES | 2025 | [TerraBrasilis](https://terrabrasilis.dpi.inpe.br/) | [crosstable-4cn-amazon-prodes.csv](data/amazon/prodes/crosstable-4cn-amazon-prodes.csv) |
 | Classificação Restore+ | 2016 | [Zenodo](https://doi.org/10.5281/zenodo.19341175) | [crosstable-4cn-amazon-restore.csv](data/amazon/restore/crosstable-4cn-amazon-restore.csv) |
 
----
-
 ## Bioma Cerrado
 
 Para os cruzamentos do Bioma Cerrado foi utilizado o PRODES. A Tabela abaixo apresenta a base de dados e a respectiva tabela de cruzamento gerada. 
