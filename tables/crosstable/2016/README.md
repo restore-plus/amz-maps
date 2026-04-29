@@ -15,16 +15,18 @@ Para baixar os cruzamentos gerados em `.zip`, [clique aqui](https://github.com/r
 O formato das tabelas de cruzamento segue um padrão em que: 
 
 **a.** As colunas correspondem às classes da 4CN (dado rasterizado em 30m para o ano de 2016);
+
 **b.** As linhas correspondem às classes da base de dados avaliadas (ie., PRODES, TerraClass e Restore+);
+
 **c.** Os valores correspondem aos **números de pixels**.
 
 **Exemplo:**
 
 | Reference              | <Classe 4CN>                                 |
 |------------------------|----------------------------------------------|
-| <Classe base de dados> | <Número de pixels cruzados entre as classes> |
-| <Classe base de dados> | <Número de pixels cruzados entre as classes> |
-| <Classe base de dados> | <Número de pixels cruzados entre as classes> |
+| < Classe base de dados > | < Número de pixels cruzados entre as classes > |
+| < Classe base de dados > | < Número de pixels cruzados entre as classes > |
+| < Classe base de dados > | < Número de pixels cruzados entre as classes > |
 
 ### Observação sobre o PRODES
 
