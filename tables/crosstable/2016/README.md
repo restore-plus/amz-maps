@@ -8,7 +8,7 @@ Esse diretório contém os cruzamentos espaciais entre os dados da 4 comunicaç�
 
 ## Download
 
-Para baixar os cruzamentos gerados em `.zip`, [clique aqui](data/crosstable-4cn.zip). Para acessar os cruzamentos gerados individualemente [clique aqui](data/). 
+Para baixar os cruzamentos gerados em `.zip`, [clique aqui](https://github.com/restore-plus/amz-maps/raw/refs/heads/main/tables/crosstable/2016/data/crosstable-4cn.zip). Para acessar os cruzamentos gerados individualemente [clique aqui](data/). 
 
 ## Formato da tabela de cruzamento
 
