@@ -1,27 +1,34 @@
 # Cruzamentos espaciais com a classificação da 4CN (2016)
 
-Todos os cruzamentos espaciais foram realizados no SITS, utilizando dados raster com resolução espacial de 30x30m. Os resultados estão expressos em **número de pixels**.
+Esse diretório contém os cruzamentos espaciais entre os dados da 4 comunicação nacional (4CN) e as bases do PRODES, TerraClass e Restore+. As análises foram conduzidas a partir do pacote [SITS](github.com/e-sensing/sits).
 
-**Ano base:** 2016
+> O **ano base** para os cruzamentos foi 2016. No caso do PRODES, fez-se o uso da versão de 2025.
 
 ---
 
-## Amazônia
+## Download
 
-As colunas das tabelas correspondem às classes da 4CN. Foram utilizados dados oficiais do PRODES e TerraClass, considerando que as melhorias dessas bases já estão incorporadas na classificação do Restore+.
+Para baixar os cruzamentos gerados em `.zip`, [clique aqui](data/crosstable-4cn.zip). Para acessar os cruzamentos gerados individualemente [clique aqui](data/). 
 
-### Dados utilizados
+## Formato da tabela de cruzamento
 
-| Fonte | Ano | Disponível em | Tabela resultante |
-|---|---|---|---|
-| Classificação rasterizada (30x30m) da 4CN | 2016 | | |
-| TerraClass | 2016 | [terraclass.gov.br](https://www.terraclass.gov.br/) | `crosstable-4in-amazon-terraclass-2016.csv` |
-| PRODES | 2025 | [TerraBrasilis](https://terrabrasilis.dpi.inpe.br/) | `crosstable-4in-amazon-prodes-2025.csv` |
-| Classificação Restore+ | 2016 | | `crosstable-4in-amazon-restore-2016.csv` |
+O formato das tabelas de cruzamento segue um padrão em que: 
+
+**a.** As colunas correspondem às classes da 4CN (dado rasterizado em 30m para o ano de 2016);
+**b.** As linhas correspondem às classes da base de dados avaliadas (ie., PRODES, TerraClass e Restore+);
+**c.** Os valores correspondem aos **números de pixels**.
+
+**Exemplo:**
+
+| Reference              | <Classe 4CN>                                 |
+|------------------------|----------------------------------------------|
+| <Classe base de dados> | <Número de pixels cruzados entre as classes> |
+| <Classe base de dados> | <Número de pixels cruzados entre as classes> |
+| <Classe base de dados> | <Número de pixels cruzados entre as classes> |
 
 ### Observação sobre o PRODES
 
-O dado PRODES utilizado corresponde à versão de 2025 e contém as seguintes classes: desmatamento acumulado, incrementos de desmatamento, hidrografia, resíduo, vegetação nativa florestal e vegetação nativa não florestal.
+O dado PRODES utilizado corresponde a versão de `2025` e contém classes de desmatamento acumulado, incrementos de desmatamento, hidrografia, resíduo, vegetação nativa florestal e vegetação nativa não florestal.
 
 Para **incremento** e **resíduo**, a interpretação das classes na tabela segue a notação `dYYYY` e `rYYYY`, onde `YYYY` corresponde ao ano de referência. Alguns exemplos:
 
@@ -35,23 +42,26 @@ Para **incremento** e **resíduo**, a interpretação das classes na tabela segu
 
 A classe `d2007` refere-se ao desmatamento acumulado em áreas florestais até 2007. Para os demais anos (ex.: `d2008`), os valores correspondem a incrementos anuais de desmatamento em vegetação nativa, tanto florestal quanto não florestal. Em áreas de **não floresta**, os incrementos foram registrados de forma bienal entre 2002 e 2018. A exceção é o ano de 2012, substituído por 2013 devido à indisponibilidade de imagens adequadas. A partir de 2018, os incrementos passaram a ser anuais.
 
-A classe `rYYYY` corresponde ao resíduo de determinado ano. São áreas desmatadas que não foram detectadas no ano correspondente, geralmente por cobertura de nuvens, e acabaram sendo mapeadas posteriormente.
+A classes de resíduos representam áreas desmatadas que não foram identificadas no ano do desmatamento, geralmente por cobertura de nuvens, sendo mapeadas posteriormente.
+
+## Bioma Amazônia
+
+Para os cruzamentos do Bioma Amazônia foram utilizados dados oficiais do PRODES, TerraClass e Restore+. A Tabela abaixo apresenta as bases de dados e as respectivas tabelas de cruzamento geradas. 
+
+
+| Base de dados | Ano | Fonte | Tabela de cruzamento com o 4CN |
+|---|---|---|---|
+| TerraClass | 2016 | [terraclass.gov.br](https://www.terraclass.gov.br/) | [crosstable-4cn-amazon-terraclass.csv](data/amazon/terraclass/crosstable-4cn-amazon-terraclass.csv) |
+| PRODES | 2025 | [TerraBrasilis](https://terrabrasilis.dpi.inpe.br/) | [crosstable-4cn-amazon-prodes.csv](data/amazon/prodes/crosstable-4cn-amazon-prodes.csv) |
+| Classificação Restore+ | 2016 | [Zenodo](https://doi.org/10.5281/zenodo.19341175) | [crosstable-4cn-amazon-restore.csv](data/amazon/restore/crosstable-4cn-amazon-restore.csv) |
 
 ---
 
-## Cerrado
+## Bioma Cerrado
 
-### Dados utilizados
+Para os cruzamentos do Bioma Cerrado foi utilizado o PRODES. A Tabela abaixo apresenta a base de dados e a respectiva tabela de cruzamento gerada. 
 
-| Fonte | Ano | Disponível em | Tabela resultante |
+
+| Base de dados | Ano | Fonte | Tabela de cruzamento com o 4CN |
 |---|---|---|---|
-| Classificação rasterizada (30x30m) da 4CN | 2016 | | |
-| PRODES | 2025 | [TerraBrasilis](https://terrabrasilis.dpi.inpe.br/) | `crosstable-4in-cerrado-prodes-2025.csv` |
-
-### Observações sobre o PRODES
-
-O conjunto de dados inclui as classes: desmatamento acumulado, incrementos de desmatamento, hidrografia, resíduo e vegetação nativa.
-
-A classe `d2000` representa o desmatamento acumulado até o ano 2000. As classes `dYYYY` correspondem aos incrementos de desmatamento e seguem uma série bienal de 2002 a 2012. A partir de 2013, passam a uma série anual.
-
-A classe `rYYYY` corresponde ao resíduo. São áreas desmatadas não detectadas no ano correspondente, geralmente devido à cobertura de nuvens.
+| PRODES | 2025 | [TerraBrasilis](https://terrabrasilis.dpi.inpe.br/) | [crosstable-4cn-cerrado-prodes.csv](data/cerrado/prodes/crosstable-4cn-cerrado-prodes.csv) |
