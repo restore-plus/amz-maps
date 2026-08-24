@@ -18,13 +18,11 @@ Historical data for years 2000 to 2014 uses the GLAD (Global Land Analysis & Dis
 | --- | --- |
 | Source identifier | `"OGH"` |
 | Collection name | `"LANDSAT-GLAD-2M"` |
-| Temporal coverage | 2002-2014 |
+| Temporal coverage | 2000-2014 |
 | Temporal resolution | Bi-monthly (P2M) |
 | Spatial resolution | 30 meters |
 | Coordinate system | EPSG:4326 (WGS84) |
 | Spectral bands | BLUE, GREEN, RED, NIR, SWIR1, SWIR2 |
-
-
 
 ### BDC Recent Landsat Data {-}
 
@@ -46,7 +44,7 @@ This section lists the maps used in the LUC-Brasil project as additional informa
 
 ### PRODES Deforestation Data {-}
 
-PRODES (Programa de Monitoramento do Desmatamento na Amazônia Legal) is Brazil's official deforestation monitoring program, maintained by INPE. It provides annual deforestation polygons for the Legal Amazon region. PRODES masks are referenced by multiple reclassification rules throughout the year-specific mask generation process. 
+PRODES (Programa de Monitoramento do Desmatamento na Amazônia Legal) is Brazil's official deforestation monitoring program, maintained by INPE. It provides annual deforestation polygons for the Legal Amazon region. The mapping uses Landsat satellite imagery or comparable data to identify and quantify deforested areas greater than or equal to 6.25 hectares. PRODES masks are referenced by multiple reclassification rules throughout the year-specific mask generation process.
 
 **Technical Specifications**
 
@@ -60,32 +58,39 @@ PRODES (Programa de Monitoramento do Desmatamento na Amazônia Legal) is Brazil'
 
 ### Terraclass Land Cover Surveys {-}
 
-Terraclass is a land use and land cover mapping project for the Brazilian Legal Amazon, produced by INPE and Embrapa. Unlike PRODES (annual), Terraclass provides detailed land cover classifications at specific survey years. Terraclass provides detailed land cover classifications that are used for various reclassification rules. 
+Terraclass is a land use and land cover mapping project for the Brazilian Legal Amazon, produced by INPE and Embrapa. Unlike PRODES (annual), Terraclass provides detailed land cover classifications at specific years. Terraclass provides detailed land cover classifications that are used for various reclassification rules. 
 
 **Technical Specifications**
 
 | Property | Value |
 | --- | --- |
 | Survey years | 2004, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024 |
-| Spatial resolution | Landsat (2004-2016) and Sentinel-2 (2018-2022)|
+| Spatial resolution | Landsat - 30m (2004-2016) and Sentinel-2 - 10m (2018-2022) |
 | Key classes (2022-2024 versions) | Silviculture, Perennial, Semiperennial and Annual Agriculture, Herbaceous Pasture, Shrubby Pasture, Secondary Vegetation, Mining, Urban area, Water |
 
 ### Water Masks {-}
 
 Water masks are used in temporal consistency rules to identify persistent water bodies across multiple years. These are primarily utilized in temporal processing rules rather than base mask preparation.
 
+**Technical Specifications**
+
+| Property | Value |
+|---|---|
+| Primary source | Terraclass water class |
+| Temporal window | 2000-2024 |
+| Purpose | Identify stable water bodies vs. temporary flooding |
+
 ### Non-forest Vegetation Mask {-}
 
-The Amazon biome has areas of Cerrado vegetation. Such areas are described as "Non-forest vegetation" (NF) and comprise about 6.6% (280,000 km²) of the biome. NF occurs as open-like formations such as savannas and grasslands; seasonally flooded areas with sandy soils and sparse trees; ecotones; isolated forest patches with deciduous, semi-deciduous, and even broadleaf characteristics; and natural areas of bare lands. The PRODES system uses a mask covering these areas since it is only targeted to measure loss of forest cover. This mask is used by the LUC-Brasil team to distinguish between forest and non-forest areas. 
+The Amazon biome also encompasses areas of Cerrado vegetation. Such areas are classified as "Non-forest vegetation" (NF) and comprise approximately 6.6% (280,000 km²) of the biome. NF includes open vegetation formations such as savannas and grasslands; seasonally flooded areas with sandy soils and sparse trees; ecotones; isolated forest patches with deciduous, semi-deciduous, and even broadleaf characteristics; and natural areas of bare lands. The PRODES system uses a mask covering these areas because it is designed only to measure the loss of forest cover. However, since 2022, PRODES has also mapped the clear-cut deforestation in NF vegetation within this mask, producing a historical dataset with biannual estimates from 2000 to 2018 and annual estimates thereafter. The LUC-Brasil team uses the non-forest vegetation mask and the associated deforestation map to distinguish between forest and non-forest areas and to periodically update and refine the mask throughout the study period.
 
 **Technical Specifications**
 
 | Property | Value |
 | --- | --- |
-| Primary source | Terraclass water class |
-| Temporal window | 2000-2025 |
-| Purpose | Identify stable water bodies vs. temporary flooding |
-
+| Primary source | PRODES  |
+| Temporal window | 2000-2024 |
+| Purpose | Update the non-forest mask across the time series |
 
 ## Sample Datasets {-}
 
