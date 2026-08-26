@@ -1,0 +1,35 @@
+# Appendix A - Input data sources used in the reclassification rules {#sec-appendix-a -}
+
+The table below presents the datasets used in the reclassification rules. The columns are organized into two groups: "TerraClass" and "PRODES", indicating the main source of the data used. In each row, it is defined as the reference year of the given data source used as input in the reclassification rules.
+
+The columns *Urban Area*, *Mining*, *Water*, *Silviculture*, *Semi-perennial crop*, *Annual crop* and *Perennial crop* refer to **TerraClass**. The columns *Deforestation* and *Non-forest* refer to **PRODES**.
+
+::: {.table-responsive .table-tall tabindex="0" role="region" aria-label="Input data sources used in the reclassification rules"}
+| Year | Urban Area | Mining | Water | Silviculture | Semi-perennial crop | Annual crop | Perennial crop | Deforestation | Non-forest |
+|---|---|---|---|---|---|---|---|---|---|
+| 2000 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2000 | 2000 |
+| 2001 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2001 | 2001 |
+| 2002 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2002 | 2002 |
+| 2003 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2003 | 2003 |
+| 2004 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2004 | 2004 |
+| 2005 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2005 | 2005 |
+| 2006 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2006 | 2006 |
+| 2007 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2007 | 2007 |
+| 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 |
+| 2009 | 2010 | 2010 | 2010 | 2010 | 2010 | 2008 | 2010 | 2009 | 2009 |
+| 2010 | 2010 | 2010 | 2010 | 2010 | 2010 | 2010 | 2010 | 2010 | 2010 |
+| 2011 | 2012 | 2012 | 2012 | 2012 | 2012 | 2010 | 2012 | 2011 | 2011 |
+| 2012 | 2012 | 2012 | 2012 | 2012 | 2012 | 2012 | 2012 | 2012 | 2012 |
+| 2013 | 2014 | 2014 | 2014 | 2014 | 2014 | 2012 | 2014 | 2013 | 2013 |
+| 2014 | 2014 | 2014 | 2014 | 2014 | 2014 | 2014 | 2014 | 2014 | 2014 |
+| 2015 | 2018 | 2014 | 2014 | 2018 | 2018 | 2014 | 2018 | 2015 | 2015 |
+| 2016 | 2018 | 2014 | 2014 | 2018 | 2018 | 2014 | 2018 | 2016 | 2016 |
+| 2017 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2017 | 2017 |
+| 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 |
+| 2019 | 2018 | 2018 | 2018 | 2018 | 2018 | 2020 | 2020 | 2019 | 2019 |
+| 2020 | 2020 | 2020 | 2020 | 2020 | 2020 | 2020 | 2020 | 2020 | 2020 |
+| 2021 | 2020 | 2020 | 2020 | 2020 | 2020 | 2020 | 2022 | 2021 | 2021 |
+| 2022 | 2022 | 2022 | 2022 | 2022 | 2022 | 2022 | 2022 | 2022 | 2022 |
+| 2023 | 2022 | 2024 | 2024 | 2024 | 2024 | 2024 | 2024 | 2023 | 2023 |
+| 2024 | 2024 | 2024 | 2024 | 2024 | 2024 | 2024 | 2024 | 2024 | 2024 |
+:::

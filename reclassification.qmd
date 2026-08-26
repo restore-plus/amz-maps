@@ -34,43 +34,43 @@ This rule is necessary due to problems in the PRODES mask. Since PRODES only obs
 
 ### Silviculture Rule #1 {-}
 
-This rule reclassifies the LUC-Brasil pixels matching "Silviculture" in TerraClass. The pixels already classified as "Silviculture" in LUC-Brasil are kept unchanged. The respective years used are defined in [Appendix A](#sec-appendix-a).
+This rule reclassifies the LUC-Brasil pixels matching "Silviculture" in TerraClass. The pixels already classified as "Silviculture" in LUC-Brasil are kept unchanged. The respective years used are defined in [Appendix A](appendix-a.qmd#sec-appendix-a).
 
 ### Silviculture Rule #2 {-}
 
-This rule reclassifies as "Pasture" the LUC-Brasil pixels which are classified as "Silviculture" in LUC-Brasil and as non "Silviculture" in TerraClass. The respective years used are defined in [Appendix A](#sec-appendix-a).
+This rule reclassifies as "Pasture" the LUC-Brasil pixels which are classified as "Silviculture" in LUC-Brasil and as non "Silviculture" in TerraClass. The respective years used are defined in [Appendix A](appendix-a.qmd#sec-appendix-a).
 
 ### Semi-Perennial Agriculture Rule #1 {-}
 
-This rule reclassifies the LUC-Brasil pixels matching "Semi-Perennial Agriculture" in TerraClass. The pixels already classified as "Semi-Perennial Agriculture" in LUC-Brasil are kept unchanged. The respective years used are defined in [Appendix A](#sec-appendix-a).
+This rule reclassifies the LUC-Brasil pixels matching "Semi-Perennial Agriculture" in TerraClass. The pixels already classified as "Semi-Perennial Agriculture" in LUC-Brasil are kept unchanged. The respective years used are defined in [Appendix A](appendix-a.qmd#sec-appendix-a).
 
 ### Semi-Perennial Agriculture Rule #2 {-}
 
-This rule reclassifies as "Pasture" the LUC-Brasil pixels which are classified as "Semi-Perennial Agriculture" in LUC-Brasil and do not match any temporary agriculture in TerraClass. The respective years used are defined in [Appendix A](#sec-appendix-a).
+This rule reclassifies as "Pasture" the LUC-Brasil pixels which are classified as "Semi-Perennial Agriculture" in LUC-Brasil and do not match any temporary agriculture in TerraClass. The respective years used are defined in [Appendix A](appendix-a.qmd#sec-appendix-a).
 
 ### Semi-Perennial Agriculture Rule #3  {-}
 
-This rule reclassifies as "Pasture" the LUC-Brasil pixels which are classified as "Semi-Perennial Agriculture" in LUC-Brasil and as non "Semi-Perennial Agriculture" in TerraClass. The respective years used are defined in [Appendix A](#sec-appendix-a).
+This rule reclassifies as "Pasture" the LUC-Brasil pixels which are classified as "Semi-Perennial Agriculture" in LUC-Brasil and as non "Semi-Perennial Agriculture" in TerraClass. The respective years used are defined in [Appendix A](appendix-a.qmd#sec-appendix-a).
 
 ### Annual Agriculture Rule  {-}
 
-This rule reclassifies the LUC-Brasil pixels matching temporary agriculture in TerraClass. The pixels already classified as "Annual Agriculture" in LUC-Brasil are kept unchanged. The respective years used are defined in [Appendix A](#sec-appendix-a).
+This rule reclassifies the LUC-Brasil pixels matching temporary agriculture in TerraClass. The pixels already classified as "Annual Agriculture" in LUC-Brasil are kept unchanged. The respective years used are defined in [Appendix A](appendix-a.qmd#sec-appendix-a).
 
 ### Perennial Agriculture Rule {-}
 
-This rule reclassifies as "Perene" the LUC-Brasil pixels matching perennial agriculture in TerraClass. In years with no TerraClass, we use the closest TerraClass year ([Appendix A](#sec-appendix-a)). Then, we reclassify as "Perene" the LUC-Brasil pixels matching perennial agriculture in TerraClass and "Secondary vegetation" or "Shrubby Pasture" in LUC-Brasil. For years prior to 2008, before TerraClass started mapping the Perennial Crop class, the 2008 TerraClass map was used as the reference for a retrospective adjustment. Pixels classified as Perennial crop in the 2008 TerraClass map and as Secondary Vegetation or Shrubby Pasture in the corresponding LUC-Brasil classification of the preceding year are reclassified as Perennial crop. This procedure is then applied interactively to earlier years so that, as long as a pixel remains classified as Secondary Vegetation or Shrubby Pasture, it is reclassified as Perennial Crop, ensuring temporal consistency throughout the time series.
+This rule reclassifies as "Perene" the LUC-Brasil pixels matching perennial agriculture in TerraClass. In years with no TerraClass, we use the closest TerraClass year ([Appendix A](appendix-a.qmd#sec-appendix-a)). Then, we reclassify as "Perene" the LUC-Brasil pixels matching perennial agriculture in TerraClass and "Secondary vegetation" or "Shrubby Pasture" in LUC-Brasil. For years prior to 2008, before TerraClass started mapping the Perennial Crop class, the 2008 TerraClass map was used as the reference for a retrospective adjustment. Pixels classified as Perennial crop in the 2008 TerraClass map and as Secondary Vegetation or Shrubby Pasture in the corresponding LUC-Brasil classification of the preceding year are reclassified as Perennial crop. This procedure is then applied interactively to earlier years so that, as long as a pixel remains classified as Secondary Vegetation or Shrubby Pasture, it is reclassified as Perennial Crop, ensuring temporal consistency throughout the time series.
 
 ### Mining Rule {-}
 
-This rule reclassifies the LUC-Brasil pixels matching "Mining" in TerraClass. The respective years used are defined in [Appendix A](#sec-appendix-a).
+This rule reclassifies the LUC-Brasil pixels matching "Mining" in TerraClass. The respective years used are defined in [Appendix A](appendix-a.qmd#sec-appendix-a).
 
 ### Urban Areas Rule {-}
 
-This rule reclassifies the LUC-Brasil pixels matching "Urban Areas" in TerraClass. To ensure temporal and spatial consistency throughout the time series, LUC-Brasil data were adjusted so that pixels once classified as urbanized areas remain in this class in subsequent years. In addition, the extent of urbanized areas in a given year cannot exceed the extent mapped in the following year, with the maximum extent corresponding to the 2024 map. For intermediate years without a corresponding TerraClass product, the adjusted data from the previous year, after applying the rules and corrections, were used as a mask. The respective years used as input are defined in [Appendix A](#sec-appendix-a).
+This rule reclassifies the LUC-Brasil pixels matching "Urban Areas" in TerraClass. To ensure temporal and spatial consistency throughout the time series, LUC-Brasil data were adjusted so that pixels once classified as urbanized areas remain in this class in subsequent years. In addition, the extent of urbanized areas in a given year cannot exceed the extent mapped in the following year, with the maximum extent corresponding to the 2024 map. For intermediate years without a corresponding TerraClass product, the adjusted data from the previous year, after applying the rules and corrections, were used as a mask. The respective years used as input are defined in [Appendix A](appendix-a.qmd#sec-appendix-a).
 
 ### Water Bodies Rule #1 {-}
 
-This rule reclassifies as "Water" the LUC-Brasil pixels which are not classified as "Wetlands" or "Seasonally Flooded" in LUC-Brasil and classified as "Water Bodies" in TerraClass. Since the "Water Bodies" class is considered static in TerraClass, for years without a corresponding TerraClass product the same water extent from the most recent available TerraClass reference year is assumed. The respective years used are defined in [Appendix A](#sec-appendix-a).
+This rule reclassifies as "Water" the LUC-Brasil pixels which are not classified as "Wetlands" or "Seasonally Flooded" in LUC-Brasil and classified as "Water Bodies" in TerraClass. Since the "Water Bodies" class is considered static in TerraClass, for years without a corresponding TerraClass product the same water extent from the most recent available TerraClass reference year is assumed. The respective years used are defined in [Appendix A](appendix-a.qmd#sec-appendix-a).
 
 ### Water Bodies Rule #2 {-}
 
@@ -78,7 +78,7 @@ The GLAD data does not have permanent water pixels (e.g., lakes, rivers). To inc
 
 ### Natural Non-Forest Areas Rule {-}
 
-This rule reclassifies the LUC-Brasil pixels matching "Natural Non-Forest" in PRODES. The respective years used are defined in [Appendix A](#sec-appendix-a).
+This rule reclassifies the LUC-Brasil pixels matching "Natural Non-Forest" in PRODES. The respective years used are defined in [Appendix A](appendix-a.qmd#sec-appendix-a).
 
 ## Reclassification Part 2: Year-Specific Mask Generation {-}
 
@@ -135,6 +135,7 @@ Accuracy assessment was performed by comparing the Restore+ maps with the TerraC
 
 **Producer's accuracy (%)**
 
+::: {.table-responsive tabindex="0" role="region" aria-label="Producer's accuracy by class and year"}
 | Class | 2008 | 2010 | 2012 | 2014 | 2016 | 2018 | 2020 | 2022 | 2024 |
 |---|---|---|---|---|---|---|---|---|---|
 | Annual Agriculture | 99.988% | 99.987% | 99.988% | 99.988% | 99.976% | 99.983% | 99.983% | 99.981% | 99.769% |
@@ -149,9 +150,11 @@ Accuracy assessment was performed by comparing the Restore+ maps with the TerraC
 | Mining | 95.248% | 95.235% | 95.220% | 95.632% | 49.915% | 95.175% | 95.484% | 95.476% | 93.303% |
 | Perennial Agriculture | 98.216% | 97.846% | 98.084% | 98.283% | 78.660% | 96.684% | 96.759% | 96.545% | 95.503% |
 | Semi-Perennial Agriculture | 98.870% | 98.986% | 98.997% | 98.805% | 89.963% | 98.962% | 98.918% | 98.870% | 98.634% |
+:::
 
 **User's accuracy (%)**
 
+::: {.table-responsive tabindex="0" role="region" aria-label="User's accuracy by class and year"}
 | Class | 2008 | 2010 | 2012 | 2014 | 2016 | 2018 | 2020 | 2022 | 2024 |
 |---|---|---|---|---|---|---|---|---|---|
 | Annual Agriculture | 88.819% | 90.304% | 90.607% | 90.589% | 98.641% | 99.007% | 99.132% | 99.148% | 99.092% |
@@ -166,37 +169,4 @@ Accuracy assessment was performed by comparing the Restore+ maps with the TerraC
 | Mining | 96.808% | 95.747% | 95.793% | 96.224% | 46.810% | 95.362% | 95.734% | 95.631% | 95.437% |
 | Perennial Agriculture | 99.024% | 98.023% | 98.186% | 98.359% | 93.632% | 96.692% | 96.777% | 96.548% | 95.694% |
 | Semi-Perennial Agriculture | 98.866% | 99.000% | 98.992% | 98.743% | 93.749% | 98.908% | 98.848% | 98.792% | 98.508% |
-
-## Appendix A - Input data sources used in the reclassification rules {#sec-appendix-a -}
-
-The table below presents the datasets used in the reclassification rules. The columns are organized into two groups: "TerraClass" and "PRODES", indicating the main source of the data used. In each row, it is defined as the reference year of the given data source used as input in the reclassification rules.
-
-The columns *Urban Area*, *Mining*, *Water*, *Silviculture*, *Semi-perennial crop*, *Annual crop* and *Perennial crop* refer to **TerraClass**; the columns *Deforestation* and *Non-forest* refer to **PRODES**.
-
-| Year | Urban Area | Mining | Water | Silviculture | Semi-perennial crop | Annual crop | Perennial crop | Deforestation | Non-forest |
-|---|---|---|---|---|---|---|---|---|---|
-| 2000 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2000 | 2000 |
-| 2001 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2001 | 2001 |
-| 2002 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2002 | 2002 |
-| 2003 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2003 | 2003 |
-| 2004 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2004 | 2004 |
-| 2005 | 2008 | 2004 | 2008 | 2008 | 2008 | 2004 | 2008 | 2005 | 2005 |
-| 2006 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2006 | 2006 |
-| 2007 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2007 | 2007 |
-| 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 | 2008 |
-| 2009 | 2010 | 2010 | 2010 | 2010 | 2010 | 2008 | 2010 | 2009 | 2009 |
-| 2010 | 2010 | 2010 | 2010 | 2010 | 2010 | 2010 | 2010 | 2010 | 2010 |
-| 2011 | 2012 | 2012 | 2012 | 2012 | 2012 | 2010 | 2012 | 2011 | 2011 |
-| 2012 | 2012 | 2012 | 2012 | 2012 | 2012 | 2012 | 2012 | 2012 | 2012 |
-| 2013 | 2014 | 2014 | 2014 | 2014 | 2014 | 2012 | 2014 | 2013 | 2013 |
-| 2014 | 2014 | 2014 | 2014 | 2014 | 2014 | 2014 | 2014 | 2014 | 2014 |
-| 2015 | 2018 | 2014 | 2014 | 2018 | 2018 | 2014 | 2018 | 2015 | 2015 |
-| 2016 | 2018 | 2014 | 2014 | 2018 | 2018 | 2014 | 2018 | 2016 | 2016 |
-| 2017 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2017 | 2017 |
-| 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 | 2018 |
-| 2019 | 2018 | 2018 | 2018 | 2018 | 2018 | 2020 | 2020 | 2019 | 2019 |
-| 2020 | 2020 | 2020 | 2020 | 2020 | 2020 | 2020 | 2020 | 2020 | 2020 |
-| 2021 | 2020 | 2020 | 2020 | 2020 | 2020 | 2020 | 2022 | 2021 | 2021 |
-| 2022 | 2022 | 2022 | 2022 | 2022 | 2022 | 2022 | 2022 | 2022 | 2022 |
-| 2023 | 2022 | 2024 | 2024 | 2024 | 2024 | 2024 | 2024 | 2023 | 2023 |
-| 2024 | 2024 | 2024 | 2024 | 2024 | 2024 | 2024 | 2024 | 2024 | 2024 |
+:::
