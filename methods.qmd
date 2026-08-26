@@ -72,7 +72,8 @@ Following the systematic sample analysis protocol, we defined a reference sample
 ```{r}
 #| label: tbl-samples-2010
 #| echo: false
-#| tbl-cap: "Training samples used to classify the 2000-2014 period"
+#| classes: plain
+#| tbl-cap: "Training samples used for the 2000-2014 period"
 suppressPackageStartupMessages(library(sits))
 
 sample_table <- function(samples) {
@@ -98,7 +99,8 @@ For the period 2015-2024, the distribution of the training set is shown in @tbl-
 ```{r}
 #| label: tbl-samples-2020
 #| echo: false
-#| tbl-cap: "Training samples used to classify the 2015-2024 period"
+#| classes: plain
+#| tbl-cap: "Training samples used for the 2015-2024 period"
 # retrieve the samples for the 2015-2024 period
 samples_amz_2020 <- readRDS("./etc/samples_amz_2020.rds")
 knitr::kable(sample_table(samples_amz_2020), align = c("l", "r", "r"))
