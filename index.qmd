@@ -17,7 +17,7 @@ The requirements set forth by GCCL/MCTI are as follows:
 
 * The LULC classes need to be compatible with the categorization used in the Brazilian Inventory of GHG Emissions.
 
-* The maps and their classes must be semantically, spatially and temporally compatible with those produced by the [TerraClass](www.terraclass.gov.br) project run by INPE and EMBRAPA, especially with those for the years 2018, 2020 and 2022.
+* The maps and their classes must be semantically, spatially and temporally compatible with those produced by the [TerraClass](https://www.terraclass.gov.br/) project run by INPE and EMBRAPA, especially with those for the years 2018, 2020 and 2022.
 
 
 ## Methodology Overview {-}

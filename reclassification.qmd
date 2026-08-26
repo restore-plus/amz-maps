@@ -131,7 +131,7 @@ This rule uses a three-year period to adjust misclassification scenarios and unl
 
 ## Accuracy assessment {-}
 
-Accuracy assessment was performed by comparing the Restore+ maps with the TerraClass reference data. The user's and producer's accuracies for the years 2008, 2010, 2012, 2014, 2016, 2018, 2020, and 2022 are presented in the table below. The complete confusion matrix, expressed as the number of pixels resulting from each comparison for each assessment year, is available at XXXXXX.
+Accuracy assessment was performed by comparing the Restore+ maps with the TerraClass reference data. The user's and producer's accuracies for the years 2008, 2010, 2012, 2014, 2016, 2018, 2020, and 2022 are presented in the table below.
 
 **Producer's accuracy (%)**
 
