@@ -23,6 +23,7 @@ book:
     - methods.qmd
     - reclassification.qmd
     - results.qmd
+    - appendix-a.qmd
 
 format:
   html:

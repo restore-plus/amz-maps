@@ -8,7 +8,7 @@
 
 <meta name="author" content="Gilberto Camara, Felipe Carlos, and Rolf Simoes">
 
-<title>Data Sets – Land Use and Land Cover Maps for Brazil Emissions Reporting</title>
+<title>Appendix A - Input data sources used in the reclassification rules – Land Use and Land Cover Maps for Brazil Emissions Reporting</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,8 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./methods.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./results.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -89,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html">Data Sets</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-a.html">Appendix A - Input data sources used in the reclassification rules</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -130,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data.html" class="sidebar-item-text sidebar-link active">
+  <a href="./data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Sets</span></a>
   </div>
 </li>
@@ -154,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./appendix-a.html" class="sidebar-item-text sidebar-link">
+  <a href="./appendix-a.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Appendix A - Input data sources used in the reclassification rules</span></a>
   </div>
 </li>
@@ -163,41 +162,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#scope" id="toc-scope" class="nav-link active" data-scroll-target="#scope">Scope</a></li>
-  <li><a href="#image-data" id="toc-image-data" class="nav-link" data-scroll-target="#image-data">Image Data</a>
-  <ul class="collapse">
-  <li><a href="#glad-landsat-historical-data" id="toc-glad-landsat-historical-data" class="nav-link" data-scroll-target="#glad-landsat-historical-data">GLAD Landsat Historical Data</a></li>
-  <li><a href="#bdc-recent-landsat-data" id="toc-bdc-recent-landsat-data" class="nav-link" data-scroll-target="#bdc-recent-landsat-data">BDC Recent Landsat Data</a></li>
-  </ul></li>
-  <li><a href="#map-data-sources" id="toc-map-data-sources" class="nav-link" data-scroll-target="#map-data-sources">Map Data Sources</a>
-  <ul class="collapse">
-  <li><a href="#prodes-deforestation-data" id="toc-prodes-deforestation-data" class="nav-link" data-scroll-target="#prodes-deforestation-data">PRODES Deforestation Data</a></li>
-  <li><a href="#terraclass-land-cover-surveys" id="toc-terraclass-land-cover-surveys" class="nav-link" data-scroll-target="#terraclass-land-cover-surveys">Terraclass Land Cover Surveys</a></li>
-  <li><a href="#water-masks" id="toc-water-masks" class="nav-link" data-scroll-target="#water-masks">Water Masks</a></li>
-  <li><a href="#non-forest-vegetation-mask" id="toc-non-forest-vegetation-mask" class="nav-link" data-scroll-target="#non-forest-vegetation-mask">Non-forest Vegetation Mask</a></li>
-  </ul></li>
-  <li><a href="#sample-datasets" id="toc-sample-datasets" class="nav-link" data-scroll-target="#sample-datasets">Sample Datasets</a>
-  <ul class="collapse">
-  <li><a href="#land-use-and-land-cover-in-baixo-tocantins-2021" id="toc-land-use-and-land-cover-in-baixo-tocantins-2021" class="nav-link" data-scroll-target="#land-use-and-land-cover-in-baixo-tocantins-2021">Land Use and Land Cover in Baixo Tocantins (2021)</a></li>
-  <li><a href="#land-cover-in-the-amazon-rainforest" id="toc-land-cover-in-the-amazon-rainforest" class="nav-link" data-scroll-target="#land-cover-in-the-amazon-rainforest">Land Cover in the Amazon Rainforest</a></li>
-  <li><a href="#land-use-and-land-cover-in-rondonia-2022" id="toc-land-use-and-land-cover-in-rondonia-2022" class="nav-link" data-scroll-target="#land-use-and-land-cover-in-rondonia-2022">Land Use and Land Cover in Rondonia (2022)</a></li>
-  <li><a href="#land-use-and-land-cover-in-legal-amazon-2019-2020" id="toc-land-use-and-land-cover-in-legal-amazon-2019-2020" class="nav-link" data-scroll-target="#land-use-and-land-cover-in-legal-amazon-2019-2020">Land Use and Land Cover in Legal Amazon (2019-2020)</a></li>
-  <li><a href="#land-use-and-land-cover-in-legal-amazon-2021-2022" id="toc-land-use-and-land-cover-in-legal-amazon-2021-2022" class="nav-link" data-scroll-target="#land-use-and-land-cover-in-legal-amazon-2021-2022">Land Use and Land Cover in Legal Amazon (2021-2022)</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/restore-plus/docs/edit/quarto/data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/restore-plus/docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Sets</h1>
+<h1 class="title"><span id="sec-appendix-a" class="quarto-section-identifier">Appendix A - Input data sources used in the reclassification rules</span></h1>
 </div>
 
 
@@ -214,500 +187,342 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="scope" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="scope">Scope</h2>
-<p>For the Amazon biome, the LUC-Brasil repository implements a comprehensive land cover classification system using Landsat satellite imagery from 2000 to 2024. The system produces annual land cover masks through a multi-stage pipeline that combines machine learning classification, temporal rule processing, and year-specific refinement using reference datasets from PRODES and TerraClass. The work processed 25 years of historical data to generate classified masks at 30-meter resolution, supporting deforestation monitoring and land use analysis in the Amazon region.</p>
-</section>
-<section id="image-data" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="image-data">Image Data</h2>
-<p>The classification uses Landsat imagery from two distinct sources, each optimized for different temporal periods. This stage produces regularized datacubes with consistent 30m spatial resolution and regular temporal intervals.</p>
-<section id="glad-landsat-historical-data" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="glad-landsat-historical-data">GLAD Landsat Historical Data</h3>
-<p>Historical data for years 2000 to 2014 uses the GLAD (Global Land Analysis &amp; Discovery) service accessed through the OGH (OpenGeoHub) interface. The regularization process aggregates observations into bi-monthly periods. The OGH service provides access to historical Landsat imagery through the GLAD processing system. This source is used for historical datacube generation.</p>
-<p><strong>Technical Specifications</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Source identifier</td>
-<td><code>"OGH"</code></td>
-</tr>
-<tr class="even">
-<td>Collection name</td>
-<td><code>"LANDSAT-GLAD-2M"</code></td>
-</tr>
-<tr class="odd">
-<td>Temporal coverage</td>
-<td>2000-2014</td>
-</tr>
-<tr class="even">
-<td>Temporal resolution</td>
-<td>Bi-monthly (P2M)</td>
-</tr>
-<tr class="odd">
-<td>Spatial resolution</td>
-<td>30 meters</td>
-</tr>
-<tr class="even">
-<td>Coordinate system</td>
-<td>EPSG:4326 (WGS84)</td>
-</tr>
-<tr class="odd">
-<td>Spectral bands</td>
-<td>BLUE, GREEN, RED, NIR, SWIR1, SWIR2</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="bdc-recent-landsat-data" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="bdc-recent-landsat-data">BDC Recent Landsat Data</h3>
-<p>The Brazil Data Cube (BDC) provides access to recent Landsat imagery through a pre-processed, analysis-ready data cube infrastructure maintained by INPE (Brazilian National Institute for Space Research). Recent data from 2015-2024 leverages the BDC infrastructure, which provides higher temporal density with monthly aggregation.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Source identifier</td>
-<td><code>"BDC"</code></td>
-</tr>
-<tr class="even">
-<td>Collection name</td>
-<td><code>"LANDSAT-OLI-16D"</code></td>
-</tr>
-<tr class="odd">
-<td>Temporal coverage</td>
-<td>2015-2024</td>
-</tr>
-<tr class="even">
-<td>Temporal resolution</td>
-<td>Monthly (P1M)</td>
-</tr>
-<tr class="odd">
-<td>Spatial resolution</td>
-<td>30 meters</td>
-</tr>
-<tr class="even">
-<td>Coordinate system</td>
-<td>BDC_MD_V2 grid system</td>
-</tr>
-<tr class="odd">
-<td>Spectral bands</td>
-<td>BLUE, GREEN, RED, NIR08, SWIR16, SWIR22, CLOUD</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="map-data-sources" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="map-data-sources">Map Data Sources</h2>
-<p>This section lists the maps used in the LUC-Brasil project as additional information, mostly as masks to improve the spatial and temporal accuracy of the result.</p>
-<section id="prodes-deforestation-data" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="prodes-deforestation-data">PRODES Deforestation Data</h3>
-<p>PRODES (Programa de Monitoramento do Desmatamento na Amazônia Legal) is Brazil’s official deforestation monitoring program, maintained by INPE. It provides annual deforestation polygons for the Legal Amazon region. The mapping uses Landsat satellite imagery or comparable data to identify and quantify deforested areas greater than or equal to 6.25 hectares. PRODES masks are referenced by multiple reclassification rules throughout the year-specific mask generation process.</p>
-<p><strong>Technical Specifications</strong></p>
+<p>The table below presents the datasets used in the reclassification rules. The columns are organized into two groups: “TerraClass” and “PRODES”, indicating the main source of the data used. In each row, it is defined as the reference year of the given data source used as input in the reclassification rules.</p>
+<p>The columns <em>Urban Area</em>, <em>Mining</em>, <em>Water</em>, <em>Silviculture</em>, <em>Semi-perennial crop</em>, <em>Annual crop</em> and <em>Perennial crop</em> refer to <strong>TerraClass</strong>. The columns <em>Deforestation</em> and <em>Non-forest</em> refer to <strong>PRODES</strong>.</p>
+<div class="table-responsive table-tall" tabindex="0" role="region" aria-label="Input data sources used in the reclassification rules">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Property</th>
-<th>Value</th>
+<th>Year</th>
+<th>Urban Area</th>
+<th>Mining</th>
+<th>Water</th>
+<th>Silviculture</th>
+<th>Semi-perennial crop</th>
+<th>Annual crop</th>
+<th>Perennial crop</th>
+<th>Deforestation</th>
+<th>Non-forest</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Temporal coverage</td>
-<td>2000-2024</td>
+<td>2000</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2000</td>
+<td>2000</td>
 </tr>
 <tr class="even">
-<td>Update frequency</td>
-<td>Annual</td>
+<td>2001</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2001</td>
+<td>2001</td>
 </tr>
 <tr class="odd">
-<td>Spatial resolution</td>
-<td>Vector polygons and raster mask</td>
+<td>2002</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2002</td>
+<td>2002</td>
 </tr>
 <tr class="even">
-<td>Key attributes</td>
-<td>Deforestation year and forest/non-forest classification</td>
+<td>2003</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2003</td>
+<td>2003</td>
 </tr>
 <tr class="odd">
-<td>Usage context</td>
-<td>Forest mask generation and deforestation reclassification rules</td>
+<td>2004</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2004</td>
+<td>2004</td>
+</tr>
+<tr class="even">
+<td>2005</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2004</td>
+<td>2008</td>
+<td>2005</td>
+<td>2005</td>
+</tr>
+<tr class="odd">
+<td>2006</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2006</td>
+<td>2006</td>
+</tr>
+<tr class="even">
+<td>2007</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2007</td>
+<td>2007</td>
+</tr>
+<tr class="odd">
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+<td>2008</td>
+</tr>
+<tr class="even">
+<td>2009</td>
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+<td>2008</td>
+<td>2010</td>
+<td>2009</td>
+<td>2009</td>
+</tr>
+<tr class="odd">
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+<td>2010</td>
+</tr>
+<tr class="even">
+<td>2011</td>
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+<td>2010</td>
+<td>2012</td>
+<td>2011</td>
+<td>2011</td>
+</tr>
+<tr class="odd">
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+<td>2012</td>
+</tr>
+<tr class="even">
+<td>2013</td>
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+<td>2012</td>
+<td>2014</td>
+<td>2013</td>
+<td>2013</td>
+</tr>
+<tr class="odd">
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+<td>2014</td>
+</tr>
+<tr class="even">
+<td>2015</td>
+<td>2018</td>
+<td>2014</td>
+<td>2014</td>
+<td>2018</td>
+<td>2018</td>
+<td>2014</td>
+<td>2018</td>
+<td>2015</td>
+<td>2015</td>
+</tr>
+<tr class="odd">
+<td>2016</td>
+<td>2018</td>
+<td>2014</td>
+<td>2014</td>
+<td>2018</td>
+<td>2018</td>
+<td>2014</td>
+<td>2018</td>
+<td>2016</td>
+<td>2016</td>
+</tr>
+<tr class="even">
+<td>2017</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2017</td>
+<td>2017</td>
+</tr>
+<tr class="odd">
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+</tr>
+<tr class="even">
+<td>2019</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2018</td>
+<td>2020</td>
+<td>2020</td>
+<td>2019</td>
+<td>2019</td>
+</tr>
+<tr class="odd">
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+</tr>
+<tr class="even">
+<td>2021</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2020</td>
+<td>2022</td>
+<td>2021</td>
+<td>2021</td>
+</tr>
+<tr class="odd">
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+<td>2022</td>
+</tr>
+<tr class="even">
+<td>2023</td>
+<td>2022</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2023</td>
+<td>2023</td>
+</tr>
+<tr class="odd">
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
+<td>2024</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="terraclass-land-cover-surveys" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="terraclass-land-cover-surveys">Terraclass Land Cover Surveys</h3>
-<p>Terraclass is a land use and land cover mapping project for the Brazilian Legal Amazon, produced by INPE and Embrapa. Unlike PRODES (annual), Terraclass provides detailed land cover classifications at specific years, which are used for various reclassification rules.</p>
-<p><strong>Technical Specifications</strong></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Survey years</td>
-<td>2004, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024</td>
-</tr>
-<tr class="even">
-<td>Spatial resolution</td>
-<td>Landsat - 30m (2004-2016) and Sentinel-2 - 10m (2018-2022)</td>
-</tr>
-<tr class="odd">
-<td>Key classes (2022-2024 versions)</td>
-<td>Silviculture, Perennial, Semiperennial, Annual Agriculture, Herbaceous Pasture, Shrubby Pasture, Secondary Vegetation, Mining, Urban area, Water</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="water-masks" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="water-masks">Water Masks</h3>
-<p>Water masks are used in temporal consistency rules to identify persistent water bodies across multiple years. These are primarily utilized in temporal processing rules rather than base mask preparation.</p>
-<p><strong>Technical Specifications</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Primary source</td>
-<td>Terraclass water class</td>
-</tr>
-<tr class="even">
-<td>Temporal window</td>
-<td>2000-2024</td>
-</tr>
-<tr class="odd">
-<td>Purpose</td>
-<td>Identify stable water bodies vs.&nbsp;temporary flooding</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="non-forest-vegetation-mask" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="non-forest-vegetation-mask">Non-forest Vegetation Mask</h3>
-<p>The Amazon biome also encompasses areas of Cerrado vegetation. Such areas are classified as “Non-forest vegetation” (NF) and comprise approximately 6.6% (280,000 km²) of the biome. NF includes open vegetation formations such as savannas and grasslands; seasonally flooded areas with sandy soils and sparse trees; ecotones; isolated forest patches with deciduous, semi-deciduous, and even broadleaf characteristics; and natural areas of bare lands. The PRODES system uses a mask covering these areas because it is designed only to measure the loss of forest cover. However, since 2022, PRODES has also mapped the clear-cut deforestation in NF vegetation within this mask, producing a historical dataset with biannual estimates from 2000 to 2018 and annual estimates thereafter. The LUC-Brasil team uses the non-forest vegetation mask and the associated deforestation map to distinguish between forest and non-forest areas and to periodically update and refine the mask throughout the study period.</p>
-<p><strong>Technical Specifications</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Primary source</td>
-<td>PRODES</td>
-</tr>
-<tr class="even">
-<td>Temporal window</td>
-<td>2000-2024</td>
-</tr>
-<tr class="odd">
-<td>Purpose</td>
-<td>Update the non-forest mask across the time series</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="sample-datasets" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="sample-datasets">Sample Datasets</h2>
-<p>This section lists the ground samples used by the LUC-Brasil project team as initial sources to select the training data used to build the modules for classification. We collected data from different sources. While all of the data sets had information on geographical location and associated class, their original time series have been collected from different data sources, such as Sentinel-2, HLS (Harmonized Landsat-Sentinel), Landsat-ETM and Landsat-OLI. For the LUC-Brasil maps, only the geographical locations and associated classes were used. All of the time series were collected from Landsat imagery.</p>
-<p>These data sets are openly available in the Github repository <a href="https://github.com/restore-plus/lulcbrasil-samples">lulcbrasil-samples</a>.</p>
-<section id="land-use-and-land-cover-in-baixo-tocantins-2021" class="level3">
-<h3 class="anchored" data-anchor-id="land-use-and-land-cover-in-baixo-tocantins-2021">Land Use and Land Cover in Baixo Tocantins (2021)</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Region</th>
-<th>Baixo Tocantins in Para state (Brazil)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Number of Time Series</td>
-<td><code>533</code></td>
-</tr>
-<tr class="even">
-<td>Satellite-Sensor</td>
-<td>LANDSAT-OLI</td>
-</tr>
-<tr class="odd">
-<td>Spatial Resolution</td>
-<td>30 meters</td>
-</tr>
-<tr class="even">
-<td>Time Extent</td>
-<td><code>2021-01-01</code> to <code>2021-12-31</code></td>
-</tr>
-<tr class="odd">
-<td>Spectral Bands</td>
-<td><code>BLUE</code>, <code>GREEN</code>, <code>RED</code>, <code>NIR08</code>, <code>SWIR16</code>, <code>SWIR22</code></td>
-</tr>
-<tr class="even">
-<td>Spectral Indices</td>
-<td><code>NDVI</code>, <code>EVI</code>, <code>MNDWI</code>, <code>NBR</code></td>
-</tr>
-<tr class="odd">
-<td>Land Cover Classes</td>
-<td><code>Small-Scale Agriculture</code>, <code>Water</code>, <code>Forest</code>, <code>Others</code>, <code>Clean Pasture</code>, <code>Dirty Pasture and Pasture with Regeneration</code>, <code>Urban Area</code>, <code>Advanced Secondary Vegetation</code>, <code>Secondary Vegetation</code>, <code>Large-Scale Agriculture</code></td>
-</tr>
-<tr class="even">
-<td>Note</td>
-<td>Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images</td>
-</tr>
-<tr class="odd">
-<td>Source</td>
-<td>Anielli Souza, Miguel Monteiro, Isabel Escada (INPE)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="land-cover-in-the-amazon-rainforest" class="level3">
-<h3 class="anchored" data-anchor-id="land-cover-in-the-amazon-rainforest">Land Cover in the Amazon Rainforest</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Region</th>
-<th>Amazon Rainforest</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Number of Time Series</td>
-<td><code>1489</code></td>
-</tr>
-<tr class="even">
-<td>Satellite-Sensor</td>
-<td>LANDSAT-OLI</td>
-</tr>
-<tr class="odd">
-<td>Spatial Resolution</td>
-<td>30 meters</td>
-</tr>
-<tr class="even">
-<td>Time Extent</td>
-<td><code>2020-01-01</code> to <code>2020-12-31</code></td>
-</tr>
-<tr class="odd">
-<td>Spectral Bands</td>
-<td><code>BLUE</code>, <code>GREEN</code>, <code>RED</code>, <code>NIR08</code>, <code>SWIR16</code>, <code>SWIR22</code></td>
-</tr>
-<tr class="even">
-<td>Spectral Indices</td>
-<td><code>NDVI</code>, <code>EVI</code>, <code>MNDWI</code>, <code>NBR</code></td>
-</tr>
-<tr class="odd">
-<td>Land Cover Classes</td>
-<td><code>Forest</code></td>
-</tr>
-<tr class="even">
-<td>Source</td>
-<td>Luis Sadeck (INPE)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="land-use-and-land-cover-in-rondonia-2022" class="level3">
-<h3 class="anchored" data-anchor-id="land-use-and-land-cover-in-rondonia-2022">Land Use and Land Cover in Rondonia (2022)</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Region</th>
-<th>Rondonia state</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Number of Time Series</td>
-<td><code>6007</code></td>
-</tr>
-<tr class="even">
-<td>Satellite-Sensor</td>
-<td>LANDSAT-OLI</td>
-</tr>
-<tr class="odd">
-<td>Spatial Resolution</td>
-<td>30 meters</td>
-</tr>
-<tr class="even">
-<td>Time Extent</td>
-<td><code>2022-01-01</code> to <code>2022-12-31</code></td>
-</tr>
-<tr class="odd">
-<td>Spectral Bands</td>
-<td><code>BLUE</code>, <code>GREEN</code>, <code>RED</code>, <code>NIR08</code>, <code>SWIR16</code>, <code>SWIR2</code></td>
-</tr>
-<tr class="even">
-<td>Spectral Indices</td>
-<td><code>NDVI</code>, <code>EVI</code>, , <code>NBR</code></td>
-</tr>
-<tr class="odd">
-<td>Land Cover Classes</td>
-<td><code>Clear_Cut_Bare_Soil</code>, <code>Clear_Cut_Burned_Area</code>, <code>Clear_Cut_Vegetation</code>, <code>Forest</code>, <code>Mountainside_Forest</code>, <code>Riparian_Forest</code>, <code>Seasonally_Flooded</code>, <code>Water</code>, <code>Wetland</code></td>
-</tr>
-<tr class="even">
-<td>Note</td>
-<td>Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images</td>
-</tr>
-<tr class="odd">
-<td>Source</td>
-<td>Anielli Souza, Ana Paula Del’Asta, Ana Rorato (INPE)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="land-use-and-land-cover-in-legal-amazon-2019-2020" class="level3">
-<h3 class="anchored" data-anchor-id="land-use-and-land-cover-in-legal-amazon-2019-2020">Land Use and Land Cover in Legal Amazon (2019-2020)</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Region</th>
-<th>Legal Amazon (Brazil)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Number of Time Series</td>
-<td><code>35723</code></td>
-</tr>
-<tr class="even">
-<td>Satellite-Sensor</td>
-<td>LANDSAT-OLI</td>
-</tr>
-<tr class="odd">
-<td>Spatial Resolution</td>
-<td>30 meters</td>
-</tr>
-<tr class="even">
-<td>Time Extent</td>
-<td><code>2019-07-28</code> to <code>2020-07-27</code></td>
-</tr>
-<tr class="odd">
-<td>Spectral Bands</td>
-<td><code>BLUE</code>, <code>GREEN</code>, <code>RED</code>, <code>NIR08</code>, <code>SWIR16</code>, <code>SWIR22</code></td>
-</tr>
-<tr class="even">
-<td>Spectral Indices</td>
-<td><code>NDVI</code>, <code>EVI</code></td>
-</tr>
-<tr class="odd">
-<td>Land Cover Classes</td>
-<td><code>Semi-Perenial Agriculture</code>, <code>Annual Agriculture 1 cycle</code>, <code>Annual Agriculture 2 cycles</code>, <code>Perenial Agriculture</code>, <code>Water Bodies</code>, <code>Shrubby Pasture</code>, <code>Herbaceous Pasture</code>, <code>Silviculture</code>, <code>Secondary Vegetation</code></td>
-</tr>
-<tr class="even">
-<td>Note</td>
-<td>Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images</td>
-</tr>
-<tr class="odd">
-<td>Source</td>
-<td>Empresa Brasileira de Pesquisa Agropecuária - EMBRAPA</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="land-use-and-land-cover-in-legal-amazon-2021-2022" class="level3">
-<h3 class="anchored" data-anchor-id="land-use-and-land-cover-in-legal-amazon-2021-2022">Land Use and Land Cover in Legal Amazon (2021-2022)</h3>
-<p>The following table presents the metadata of this dataset:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Region</th>
-<th>Legal Amazon (Brazil)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Number of Time Series</td>
-<td><code>160496</code></td>
-</tr>
-<tr class="even">
-<td>Satellite-Sensor</td>
-<td>LANDSAT-OLI</td>
-</tr>
-<tr class="odd">
-<td>Spatial Resolution</td>
-<td>30 meters</td>
-</tr>
-<tr class="even">
-<td>Time Extent</td>
-<td><code>2021-07-12</code> to <code>2022-09-30</code></td>
-</tr>
-<tr class="odd">
-<td>Spectral Bands</td>
-<td><code>BLUE</code>, <code>GREEN</code>, <code>RED</code>, <code>NIR08</code>, <code>SWIR16</code>, <code>SWIR22</code></td>
-</tr>
-<tr class="even">
-<td>Spectral Indices</td>
-<td><code>NDVI</code>, <code>EVI</code>, <code>MNDWI</code>, <code>NBR</code></td>
-</tr>
-<tr class="odd">
-<td>Land Cover Classes</td>
-<td><code>1ciclo</code>, <code>2ciclos</code>, <code>agua</code>, <code>past_arb</code>, <code>past_herb</code>, <code>semiperene</code>, <code>veg_natural</code></td>
-</tr>
-<tr class="even">
-<td>Land Cover Classes</td>
-<td><code>Semi-Perenial Agriculture</code>, <code>Annual Agriculture 1 cycle</code>, <code>Annual Agriculture 2 cycles</code>, <code>Water Bodies</code>, <code>Shrubby Pasture</code>, <code>Herbaceous Pasture</code>, <code>Natural Vegetation</code></td>
-</tr>
-<tr class="odd">
-<td>Note</td>
-<td>Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images</td>
-</tr>
-<tr class="even">
-<td>Source</td>
-<td>Empresa Brasileira de Pesquisa Agropecuária - EMBRAPA</td>
-</tr>
-</tbody>
-</table>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1112,14 +927,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="./results.html" class="pagination-link" aria-label="Results">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Results</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./methods.html" class="pagination-link" aria-label="Methods">
-        <span class="nav-page-text">Methods</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -1130,7 +942,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/restore-plus/docs/edit/quarto/data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/restore-plus/docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/restore-plus/docs/edit/quarto/appendix-a.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/restore-plus/docs/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
