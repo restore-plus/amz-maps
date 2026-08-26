@@ -108,6 +108,8 @@ The rule targets specific years where TerraClass surveys are available:
 | 2021 | 2020 | 2022 | Between consecutive surveys |
 | 2023 | 2022 | 2024 | Between consecutive surveys |
 
+: TerraClass reference years used by the perennial agriculture trajectory rule {#tbl-perennial-trajectory}
+
 ### Secondary Vegetation - Pasture Consistency {-}
 
 This rule analyzes secondary vegetation to pasture transitions by examining 3-year trajectories. This rule identifies pixels classified as secondary vegetation that are surrounded by pasture classifications in adjacent years, helping distinguish true secondary vegetation from misclassified pasture areas.
@@ -128,3 +130,5 @@ This rule uses a three-year period to adjust misclassification scenarios and unl
 | 2016 | 2017 | 2018 |
 | 2018 | 2019 | 2020 |
 | 2020 | 2021 | 2022 |
+
+: TerraClass reference years used by the cropland/pasture consistency rule {#tbl-cropland-pasture}

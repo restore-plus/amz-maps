@@ -224,7 +224,12 @@ ul.task-list li input[type="checkbox"] {
 <section id="glad-landsat-historical-data" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="glad-landsat-historical-data">GLAD Landsat Historical Data</h3>
 <p>Historical data for years 2000 to 2014 uses the GLAD (Global Land Analysis &amp; Discovery) service accessed through the OGH (OpenGeoHub) interface. The regularization process aggregates observations into bi-monthly periods. The OGH service provides access to historical Landsat imagery through the GLAD processing system. This source is used for historical datacube generation.</p>
-<p><strong>Technical Specifications</strong></p>
+<div id="tbl-glad" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Technical specifications of the GLAD Landsat data
+</figcaption>
+<div aria-describedby="tbl-glad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -263,10 +268,19 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 <section id="bdc-recent-landsat-data" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="bdc-recent-landsat-data">BDC Recent Landsat Data</h3>
 <p>The Brazil Data Cube (BDC) provides access to recent Landsat imagery through a pre-processed, analysis-ready data cube infrastructure maintained by INPE (Brazilian National Institute for Space Research). Recent data from 2015-2024 leverages the BDC infrastructure, which provides higher temporal density with monthly aggregation.</p>
+<div id="tbl-bdc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bdc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Technical specifications of the BDC Landsat data
+</figcaption>
+<div aria-describedby="tbl-bdc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -305,6 +319,9 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 </section>
 <section id="map-data-sources" class="level2 unnumbered">
@@ -313,7 +330,12 @@ ul.task-list li input[type="checkbox"] {
 <section id="prodes-deforestation-data" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="prodes-deforestation-data">PRODES Deforestation Data</h3>
 <p>PRODES (Programa de Monitoramento do Desmatamento na Amazônia Legal) is Brazil’s official deforestation monitoring program, maintained by INPE. It provides annual deforestation polygons for the Legal Amazon region. The mapping uses Landsat satellite imagery or comparable data to identify and quantify deforested areas greater than or equal to 6.25 hectares. PRODES masks are referenced by multiple reclassification rules throughout the year-specific mask generation process.</p>
-<p><strong>Technical Specifications</strong></p>
+<div id="tbl-prodes" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-prodes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Technical specifications of the PRODES deforestation data
+</figcaption>
+<div aria-describedby="tbl-prodes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -348,11 +370,19 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 <section id="terraclass-land-cover-surveys" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="terraclass-land-cover-surveys">Terraclass Land Cover Surveys</h3>
 <p>Terraclass is a land use and land cover mapping project for the Brazilian Legal Amazon, produced by INPE and Embrapa. Unlike PRODES (annual), Terraclass provides detailed land cover classifications at specific years, which are used for various reclassification rules.</p>
-<p><strong>Technical Specifications</strong></p>
+<div id="tbl-terraclass" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-terraclass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Technical specifications of the Terraclass land cover surveys
+</figcaption>
+<div aria-describedby="tbl-terraclass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -379,11 +409,19 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 <section id="water-masks" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="water-masks">Water Masks</h3>
 <p>Water masks are used in temporal consistency rules to identify persistent water bodies across multiple years. These are primarily utilized in temporal processing rules rather than base mask preparation.</p>
-<p><strong>Technical Specifications</strong></p>
+<div id="tbl-water-mask" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-water-mask-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: Technical specifications of the water masks
+</figcaption>
+<div aria-describedby="tbl-water-mask-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -406,11 +444,19 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 <section id="non-forest-vegetation-mask" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="non-forest-vegetation-mask">Non-forest Vegetation Mask</h3>
 <p>The Amazon biome also encompasses areas of Cerrado vegetation. Such areas are classified as “Non-forest vegetation” (NF) and comprise approximately 6.6% (280,000 km²) of the biome. NF includes open vegetation formations such as savannas and grasslands; seasonally flooded areas with sandy soils and sparse trees; ecotones; isolated forest patches with deciduous, semi-deciduous, and even broadleaf characteristics; and natural areas of bare lands. The PRODES system uses a mask covering these areas because it is designed only to measure the loss of forest cover. However, since 2022, PRODES has also mapped the clear-cut deforestation in NF vegetation within this mask, producing a historical dataset with biannual estimates from 2000 to 2018 and annual estimates thereafter. The LUC-Brasil team uses the non-forest vegetation mask and the associated deforestation map to distinguish between forest and non-forest areas and to periodically update and refine the mask throughout the study period.</p>
-<p><strong>Technical Specifications</strong></p>
+<div id="tbl-nonforest-mask" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-nonforest-mask-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: Technical specifications of the non-forest vegetation mask
+</figcaption>
+<div aria-describedby="tbl-nonforest-mask-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -433,6 +479,9 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 </section>
 <section id="sample-datasets" class="level2 unnumbered">
@@ -441,6 +490,12 @@ ul.task-list li input[type="checkbox"] {
 <p>These data sets are openly available in the Github repository <a href="https://github.com/restore-plus/lulcbrasil-samples">lulcbrasil-samples</a>.</p>
 <section id="land-use-and-land-cover-in-baixo-tocantins-2021" class="level3">
 <h3 class="anchored" data-anchor-id="land-use-and-land-cover-in-baixo-tocantins-2021">Land Use and Land Cover in Baixo Tocantins (2021)</h3>
+<div id="tbl-samples-tocantins" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-samples-tocantins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7: Sample dataset: land use and land cover in Baixo Tocantins (2021)
+</figcaption>
+<div aria-describedby="tbl-samples-tocantins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -491,9 +546,18 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 <section id="land-cover-in-the-amazon-rainforest" class="level3">
 <h3 class="anchored" data-anchor-id="land-cover-in-the-amazon-rainforest">Land Cover in the Amazon Rainforest</h3>
+<div id="tbl-samples-rainforest" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-samples-rainforest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8: Sample dataset: land cover in the Amazon Rainforest
+</figcaption>
+<div aria-describedby="tbl-samples-rainforest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -540,9 +604,18 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 <section id="land-use-and-land-cover-in-rondonia-2022" class="level3">
 <h3 class="anchored" data-anchor-id="land-use-and-land-cover-in-rondonia-2022">Land Use and Land Cover in Rondonia (2022)</h3>
+<div id="tbl-samples-rondonia" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-samples-rondonia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9: Sample dataset: land use and land cover in Rondonia (2022)
+</figcaption>
+<div aria-describedby="tbl-samples-rondonia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -593,9 +666,18 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 <section id="land-use-and-land-cover-in-legal-amazon-2019-2020" class="level3">
 <h3 class="anchored" data-anchor-id="land-use-and-land-cover-in-legal-amazon-2019-2020">Land Use and Land Cover in Legal Amazon (2019-2020)</h3>
+<div id="tbl-samples-amazon-2019" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-samples-amazon-2019-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10: Sample dataset: land use and land cover in the Legal Amazon (2019-2020)
+</figcaption>
+<div aria-describedby="tbl-samples-amazon-2019-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -646,10 +728,19 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 <section id="land-use-and-land-cover-in-legal-amazon-2021-2022" class="level3">
 <h3 class="anchored" data-anchor-id="land-use-and-land-cover-in-legal-amazon-2021-2022">Land Use and Land Cover in Legal Amazon (2021-2022)</h3>
-<p>The following table presents the metadata of this dataset:</p>
+<p>The metadata of this dataset is presented in <a href="#tbl-samples-amazon-2021" class="quarto-xref">Table&nbsp;<span>11</span></a>.</p>
+<div id="tbl-samples-amazon-2021" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-samples-amazon-2021-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;11: Sample dataset: land use and land cover in the Legal Amazon (2021-2022)
+</figcaption>
+<div aria-describedby="tbl-samples-amazon-2021-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -704,6 +795,9 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 
 
 </section>
