@@ -58,3 +58,45 @@ figure-caption {
   box-shadow: 0px 0px 10px 5px #cccccc;
   margin: 10px;
 }
+
+// Accuracies table
+main .table-responsive {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  margin-bottom: 1rem;
+
+  // background:
+  //   linear-gradient(to right, #fff 20%, rgba(255, 255, 255, 0)) left center / 24px 100% no-repeat,
+  //   linear-gradient(to left,  #fff 20%, rgba(255, 255, 255, 0)) right center / 24px 100% no-repeat,
+  //   radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.30), transparent) left center / 22px 100% no-repeat,
+  //   radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.30), transparent) right center / 22px 100% no-repeat;
+
+  background-attachment: local, local, scroll, scroll;
+}
+
+main .table-responsive::-webkit-scrollbar { height: 9px; }
+main .table-responsive::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); border-radius: 5px; }
+main .table-responsive::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.28); border-radius: 5px; }
+main .table-responsive > table { margin-bottom: 0; }
+
+main table.table {
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+main table.table :is(th, td) { padding: 0.4rem 0.5rem; }
+
+// Appendix table
+main .table-responsive.table-tall {
+  max-height: 32rem;
+  overflow-y: auto;
+}
+main .table-responsive.table-tall thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+  box-shadow:
+    inset 0  1px 0 rgba(0, 0, 0, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
