@@ -13,7 +13,7 @@ The 2000-2024 LUCC maps for the Brazilian Amazon biome are available in [Zenodo]
 The area used for annual agriculture has increased significantly from about 1.0 Mha in 2000 to 7.5 Mha in 2022, the largest percentual gain for all mapped classes. This growth can be largely attributed to the expansion of soy plantations in the region.
 
 ```{r}
-#| label: cropland
+#| label: fig-cropland
 #| echo: false
 #| out-width: 90%
 #| fig-align: "center"
@@ -24,7 +24,7 @@ knitr::include_graphics("./images/annual_agriculture.png")
 The pasture area has remained fairly constant since 2008, ranging from 51 Mha to 54 Mha. One can speculate that this could be an effect of the Soy Moratorium. Working in Mato Grosso, Picoli et al. [@Picoli2020] provided evidence that soybean expansion has caused indirect impacts by replacing pasture areas and causing pasture expansion elsewhere. Therefore, annual agricultural caused an indirect land-use change effect, since the expansion of croplands takes place on pasture areas. 
 
 ```{r}
-#| label: pasture
+#| label: fig-pasture
 #| echo: false
 #| out-width: 90%
 #| fig-align: "center"
@@ -35,20 +35,19 @@ knitr::include_graphics("./images/pasture.png")
 Secondary vegetation has remained fairly constant during the 2000-2020 period, ranging from 13 Mha to 15.5 Mha. When compared to the expansion of agriculture and spatial expansion of pasture, while keeping the total pasture area constant), these numbers suggest a period cycle of abandonment and reuse of part of the land.
 
 ```{r}
-#| label: secveg
+#| label: fig-secveg
 #| echo: false
 #| out-width: 90%
 #| fig-align: "center"
-#| fig-cap: Pasture area (Mha) in Amazonia (2000-2022)
+#| fig-cap: Secondary vegetation area (Mha) in Amazonia (2000-2022)
 knitr::include_graphics("./images/secondary_vegetation.png") 
 ```
 
 ### Accuracy assessment {-}
 
-Accuracy assessment was performed by comparing the Restore+ maps with the TerraClass reference data. The user's and producer's accuracies for the years 2008, 2010, 2012, 2014, 2016, 2018, 2020, and 2022 are presented in the table below.
+Accuracy assessment was performed by comparing the Restore+ maps with the TerraClass reference data. The user's and producer's accuracies for the years 2008, 2010, 2012, 2014, 2016, 2018, 2020, and 2022 are presented in @tbl-accuracy-producer and @tbl-accuracy-user.
 
-**Producer's accuracy (%)**
-
+::: {#tbl-accuracy-producer}
 ::: {.table-responsive tabindex="0" role="region" aria-label="Producer's accuracy by class and year"}
 | Class | 2008 | 2010 | 2012 | 2014 | 2016 | 2018 | 2020 | 2022 | 2024 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -66,8 +65,10 @@ Accuracy assessment was performed by comparing the Restore+ maps with the TerraC
 | Semi-Perennial Agriculture | 98.870% | 98.986% | 98.997% | 98.805% | 89.963% | 98.962% | 98.918% | 98.870% | 98.634% |
 :::
 
-**User's accuracy (%)**
+Producer's accuracy (%) by class and year
+:::
 
+::: {#tbl-accuracy-user}
 ::: {.table-responsive tabindex="0" role="region" aria-label="User's accuracy by class and year"}
 | Class | 2008 | 2010 | 2012 | 2014 | 2016 | 2018 | 2020 | 2022 | 2024 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -83,6 +84,9 @@ Accuracy assessment was performed by comparing the Restore+ maps with the TerraC
 | Mining | 96.808% | 95.747% | 95.793% | 96.224% | 46.810% | 95.362% | 95.734% | 95.631% | 95.437% |
 | Perennial Agriculture | 99.024% | 98.023% | 98.186% | 98.359% | 93.632% | 96.692% | 96.777% | 96.548% | 95.694% |
 | Semi-Perennial Agriculture | 98.866% | 99.000% | 98.992% | 98.743% | 93.749% | 98.908% | 98.848% | 98.792% | 98.508% |
+:::
+
+User's accuracy (%) by class and year
 :::
 
 

@@ -12,8 +12,6 @@ The classification uses Landsat imagery from two distinct sources, each optimize
 
 Historical data for years 2000 to 2014 uses the GLAD (Global Land Analysis & Discovery) service accessed through the OGH (OpenGeoHub) interface. The regularization process aggregates observations into bi-monthly periods. The OGH service provides access to historical Landsat imagery through the GLAD processing system. This source is used for historical datacube generation.
 
-**Technical Specifications**
-
 | Property | Value |
 | --- | --- |
 | Source identifier | `"OGH"` |
@@ -23,6 +21,8 @@ Historical data for years 2000 to 2014 uses the GLAD (Global Land Analysis & Dis
 | Spatial resolution | 30 meters |
 | Coordinate system | EPSG:4326 (WGS84) |
 | Spectral bands | BLUE, GREEN, RED, NIR, SWIR1, SWIR2 |
+
+: Technical specifications of the GLAD Landsat data {#tbl-glad}
 
 ### BDC Recent Landsat Data {-}
 
@@ -38,6 +38,8 @@ The Brazil Data Cube (BDC) provides access to recent Landsat imagery through a p
 | Coordinate system | BDC_MD_V2 grid system |
 | Spectral bands | BLUE, GREEN, RED, NIR08, SWIR16, SWIR22, CLOUD |
 
+: Technical specifications of the BDC Landsat data {#tbl-bdc}
+
 ## Map Data Sources {-}
 
 This section lists the maps used in the LUC-Brasil project as additional information, mostly as masks to improve the spatial and temporal accuracy of the result. 
@@ -45,8 +47,6 @@ This section lists the maps used in the LUC-Brasil project as additional informa
 ### PRODES Deforestation Data {-}
 
 PRODES (Programa de Monitoramento do Desmatamento na Amazônia Legal) is Brazil's official deforestation monitoring program, maintained by INPE. It provides annual deforestation polygons for the Legal Amazon region. The mapping uses Landsat satellite imagery or comparable data to identify and quantify deforested areas greater than or equal to 6.25 hectares. PRODES masks are referenced by multiple reclassification rules throughout the year-specific mask generation process.
-
-**Technical Specifications**
 
 | Property | Value |
 | --- | --- |
@@ -56,11 +56,11 @@ PRODES (Programa de Monitoramento do Desmatamento na Amazônia Legal) is Brazil'
 | Key attributes | Deforestation year and forest/non-forest classification |
 | Usage context | Forest mask generation and deforestation reclassification rules |
 
+: Technical specifications of the PRODES deforestation data {#tbl-prodes}
+
 ### Terraclass Land Cover Surveys {-}
 
 Terraclass is a land use and land cover mapping project for the Brazilian Legal Amazon, produced by INPE and Embrapa. Unlike PRODES (annual), Terraclass provides detailed land cover classifications at specific years, which are used for various reclassification rules. 
-
-**Technical Specifications**
 
 | Property | Value |
 | --- | --- |
@@ -68,11 +68,11 @@ Terraclass is a land use and land cover mapping project for the Brazilian Legal 
 | Spatial resolution | Landsat - 30m (2004-2016) and Sentinel-2 - 10m (2018-2022) |
 | Key classes (2022-2024 versions) | Silviculture, Perennial, Semiperennial, Annual Agriculture, Herbaceous Pasture, Shrubby Pasture, Secondary Vegetation, Mining, Urban area, Water |
 
+: Technical specifications of the Terraclass land cover surveys {#tbl-terraclass}
+
 ### Water Masks {-}
 
 Water masks are used in temporal consistency rules to identify persistent water bodies across multiple years. These are primarily utilized in temporal processing rules rather than base mask preparation.
-
-**Technical Specifications**
 
 | Property | Value |
 |---|---|
@@ -80,17 +80,19 @@ Water masks are used in temporal consistency rules to identify persistent water 
 | Temporal window | 2000-2024 |
 | Purpose | Identify stable water bodies vs. temporary flooding |
 
+: Technical specifications of the water masks {#tbl-water-mask}
+
 ### Non-forest Vegetation Mask {-}
 
 The Amazon biome also encompasses areas of Cerrado vegetation. Such areas are classified as "Non-forest vegetation" (NF) and comprise approximately 6.6% (280,000 km²) of the biome. NF includes open vegetation formations such as savannas and grasslands; seasonally flooded areas with sandy soils and sparse trees; ecotones; isolated forest patches with deciduous, semi-deciduous, and even broadleaf characteristics; and natural areas of bare lands. The PRODES system uses a mask covering these areas because it is designed only to measure the loss of forest cover. However, since 2022, PRODES has also mapped the clear-cut deforestation in NF vegetation within this mask, producing a historical dataset with biannual estimates from 2000 to 2018 and annual estimates thereafter. The LUC-Brasil team uses the non-forest vegetation mask and the associated deforestation map to distinguish between forest and non-forest areas and to periodically update and refine the mask throughout the study period.
-
-**Technical Specifications**
 
 | Property | Value |
 | --- | --- |
 | Primary source | PRODES  |
 | Temporal window | 2000-2024 |
 | Purpose | Update the non-forest mask across the time series |
+
+: Technical specifications of the non-forest vegetation mask {#tbl-nonforest-mask}
 
 ## Sample Datasets {-}
 
@@ -112,6 +114,8 @@ These data sets are openly available in the Github repository [lulcbrasil-sample
 | Note | Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images | 
 | Source            | Anielli Souza, Miguel Monteiro, Isabel Escada  (INPE)|
 
+: Sample dataset: land use and land cover in Baixo Tocantins (2021) {#tbl-samples-tocantins}
+
 ### Land Cover in the Amazon Rainforest 
 
 | Region               | Amazon Rainforest |
@@ -124,6 +128,8 @@ These data sets are openly available in the Github repository [lulcbrasil-sample
 | Spectral Indices     | `NDVI`, `EVI`, `MNDWI`, `NBR`  |
 | Land Cover Classes   | `Forest`|
 | Source            | Luis Sadeck (INPE)|
+
+: Sample dataset: land cover in the Amazon Rainforest {#tbl-samples-rainforest}
 
 ### Land Use and Land Cover in Rondonia (2022)
 
@@ -138,6 +144,8 @@ These data sets are openly available in the Github repository [lulcbrasil-sample
 | Land Cover Classes   | `Clear_Cut_Bare_Soil`, `Clear_Cut_Burned_Area`, `Clear_Cut_Vegetation`, `Forest`, `Mountainside_Forest`, `Riparian_Forest`, `Seasonally_Flooded`, `Water`, `Wetland` |
 | Note | Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images |
 | Source           | Anielli Souza, Ana Paula Del'Asta, Ana Rorato (INPE) |
+
+: Sample dataset: land use and land cover in Rondonia (2022) {#tbl-samples-rondonia}
 
 
 ### Land Use and Land Cover in Legal Amazon (2019-2020)
@@ -154,9 +162,11 @@ These data sets are openly available in the Github repository [lulcbrasil-sample
 | Note | Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images |
 | Source          | Empresa Brasileira de Pesquisa Agropecuária - EMBRAPA |                                                                           
 
+: Sample dataset: land use and land cover in the Legal Amazon (2019-2020) {#tbl-samples-amazon-2019}
+
 ### Land Use and Land Cover in Legal Amazon (2021-2022)
 
-The following table presents the metadata of this dataset:
+The metadata of this dataset is presented in @tbl-samples-amazon-2021.
 
 | Region               | Legal Amazon (Brazil) |
 | --- | --- |
@@ -170,5 +180,7 @@ The following table presents the metadata of this dataset:
 | Land Cover Classes   | `Semi-Perenial Agriculture`, `Annual Agriculture 1 cycle`, `Annual Agriculture 2 cycles`, `Water Bodies`, `Shrubby Pasture`, `Herbaceous Pasture`, `Natural Vegetation` |
 | Note | Original data collected using Sentinel-2 images. Geographical locations were re-used by LUC-Brasil to collect time series of Landsat images |
 | Source          | Empresa Brasileira de Pesquisa Agropecuária - EMBRAPA |  
+
+: Sample dataset: land use and land cover in the Legal Amazon (2021-2022) {#tbl-samples-amazon-2021}
 
 
