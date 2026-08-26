@@ -332,13 +332,13 @@ Figure&nbsp;2: Exploratory data analysis of herbaceous pasture samples
 </div>
 <p>The sample quality assurance part uses self-organizing maps (SOM), a clustering method where high-dimensional data is mapped into a two-dimensional map, The input data for quality assessment is a set of training samples, which are high-dimensional data; for example, a time series with 25 instances of 4 spectral bands has 100 dimensions. When projecting a high-dimensional dataset into a 2D SOM map. Each time series will be mapped to one of the neurons. Since the number of neurons is smaller than the number of classes, each neuron will be associated with many time series. The resulting 2D map will be a set of clusters. The neighbors of each neuron of a SOM map provide information on intraclass and interclass variability, which is used to detect noisy samples. The methodology of using SOM for sample quality assessment is discussed in detail in the reference paper <span class="citation" data-cites="Santos2021a"><a href="#ref-Santos2021a" role="doc-biblioref">[1]</a></span>.</p>
 <p>Following the systematic sample analysis protocol, we defined a reference sample set from 2022 imagery, which was used to train a global model and classify maps for the 2015-2024 period. This sample set was subsequently transferred to the 2010 imagery, where an additional sample cleaning and selection procedure was performed to ensure consistency between the sample labels and the corresponding image features. The resulting training set was then used to train the model and to produce the maps for the 2000-2014 period. The two sample training sets are presented below. We first present the training set used for the 2000-2014 period (<a href="#tbl-samples-2010" class="quarto-xref">Table&nbsp;<span>2</span></a>).</p>
-<div class="cell">
-<div id="tbl-samples-2010" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell plain">
+<div id="tbl-samples-2010" class="cell plain quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-samples-2010-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Training samples used to classify the 2000-2014 period
+Table&nbsp;2: Training samples used for the 2000-2014 period
 </figcaption><div aria-describedby="tbl-samples-2010-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="cell plain caption-top table">
 <thead><tr class="header">
 <th style="text-align: left;">Class</th>
 <th style="text-align: right;">Samples</th>
@@ -414,13 +414,13 @@ Table&nbsp;2: Training samples used to classify the 2000-2014 period
 </div>
 <p>Some of the classes used in the training sample set are not included in the final LUC-Brazil classes. These include classes such as “Riparian_Forest”, “Mountainside_Forest”, and “Seasonally_Flooded”. “Riparian_Forest” and “Mountainside_Forest” classes are useful to discriminate between different types of natural forests and are later aggregated into the “Forest” class. “Seasonally_Flooded” class was aggregated into the “Wetlands” class. Other classes produced by LUC-Brazil, such as “Perennial Vegetation” are not present in the data set and are added later using reclassification rules based on the TerraClass data. Extensive testing by the team shows that this class is difficult to detect using Landsat-5 and Landsat-7 images.</p>
 <p>For the period 2015-2024, the distribution of the training set is shown in <a href="#tbl-samples-2020" class="quarto-xref">Table&nbsp;<span>3</span></a>.</p>
-<div class="cell">
-<div id="tbl-samples-2020" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell plain">
+<div id="tbl-samples-2020" class="cell plain quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-samples-2020-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: Training samples used to classify the 2015-2024 period
+Table&nbsp;3: Training samples used for the 2015-2024 period
 </figcaption><div aria-describedby="tbl-samples-2020-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="cell caption-top table table-sm table-striped small">
+<table class="cell plain caption-top table">
 <thead><tr class="header">
 <th style="text-align: left;">Class</th>
 <th style="text-align: right;">Samples</th>
