@@ -67,23 +67,41 @@ knitr::include_graphics("./images/pasture_visual_exploration.png")
 
 The sample quality assurance part uses self-organizing maps (SOM), a clustering method where high-dimensional data is mapped into a two-dimensional map, The input data for quality assessment is a set of training samples, which are high-dimensional data; for example, a time series with 25 instances of 4 spectral bands has 100 dimensions. When projecting a high-dimensional dataset into a 2D SOM map. Each time series will be mapped to one of the neurons. Since the number of neurons is smaller than the number of classes, each neuron will be associated with many time series. The resulting 2D map will be a set of clusters. The neighbors of each neuron of a SOM map provide information on intraclass and interclass variability, which is used to detect noisy samples. The methodology of using SOM for sample quality assessment is discussed in detail in the reference paper [@Santos2021a]. 
 
-Following the systematic sample analysis protocol, we defined a reference sample set from 2022 imagery, which was used to train a global model and classify maps for the 2015-2024 period. This sample set was subsequently transferred to the 2010 imagery, where an additional sample cleaning and selection procedure was performed to ensure consistency between the sample labels and the corresponding image features. The resulting training set was then used to train the model and to produce the maps for the 2000-2014 period. The two sample training sets are presented below. We first present the training set used for the 2000-2014 period.
+Following the systematic sample analysis protocol, we defined a reference sample set from 2022 imagery, which was used to train a global model and classify maps for the 2015-2024 period. This sample set was subsequently transferred to the 2010 imagery, where an additional sample cleaning and selection procedure was performed to ensure consistency between the sample labels and the corresponding image features. The resulting training set was then used to train the model and to produce the maps for the 2000-2014 period. The two sample training sets are presented below. We first present the training set used for the 2000-2014 period (@tbl-samples-2010).
 
 ```{r}
-library(sits)
+#| label: tbl-samples-2010
+#| echo: false
+#| tbl-cap: "Training samples used to classify the 2000-2014 period"
+suppressPackageStartupMessages(library(sits))
+
+sample_table <- function(samples) {
+  samples_summary <- summary(samples)
+
+  data.frame(
+    Class = c(stringr::str_replace(samples_summary$label, "_", " "), "**Total**"),
+    Samples = format(c(samples_summary$count, sum(samples_summary$count)), big.mark = ",", trim = TRUE),
+    `Proportion (%)` = sprintf("%.1f", 100 * c(samples_summary$prop, sum(samples_summary$prop))),
+    check.names = FALSE
+  )
+}
+
 # retrieve the samples for the 2000-2014 period
 samples_amz_2010 <- readRDS("./etc/samples_amz_2010.rds")
-summary(samples_amz_2010)
+knitr::kable(sample_table(samples_amz_2010), align = c("l", "r", "r"))
 ```
 
 Some of the classes used in the training sample set are not included in the final LUC-Brazil classes. These include classes such as "Riparian_Forest", "Mountainside_Forest", and "Seasonally_Flooded". "Riparian_Forest" and "Mountainside_Forest" classes are useful to discriminate between different types of natural forests and are later aggregated into the "Forest" class. "Seasonally_Flooded" class was aggregated into the "Wetlands" class. Other classes produced by LUC-Brazil, such as "Perennial Vegetation" are not present in the data set and are added later using reclassification rules based on the TerraClass data. Extensive testing by the team shows that this class is difficult to detect using Landsat-5 and Landsat-7 images.
 
-For the period 2015-2024, the distribution of the training set is shown below.
+For the period 2015-2024, the distribution of the training set is shown in @tbl-samples-2020.
 
 ```{r}
+#| label: tbl-samples-2020
+#| echo: false
+#| tbl-cap: "Training samples used to classify the 2015-2024 period"
 # retrieve the samples for the 2015-2024 period
 samples_amz_2020 <- readRDS("./etc/samples_amz_2020.rds")
-summary(samples_amz_2020)
+knitr::kable(sample_table(samples_amz_2020), align = c("l", "r", "r"))
 ```
 
 ## Stage 3: Model Training 
